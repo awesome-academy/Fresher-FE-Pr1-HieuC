@@ -1,0 +1,43 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+
+    @include respond-to(largedesktop-and-down) {
+        font-size: 56.25%;
+    }
+
+    @include respond-to(desktop-and-down) {
+        font-size: 50%;
+    }
+
+    @include respond-to(tablet-and-down) {
+        font-size: 46.25%;
+    }
+
+    @include respond-to(phone-and-down) {
+        font-size: 42.75%;
+    }
+
+    @include respond-to(smallphone-and-down) {
+        font-size: 37.5%;
+    }
+}
+
+body {
+    @include respond-to(desktop-and-down) {
+        padding: 0;
+    }
+}
+
+p,
+ul,
+ol {
+    margin: 0;
+}

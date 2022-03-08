@@ -1,0 +1,83 @@
+// COLORS
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+
+$color-tertiary-light: #2998ff;
+$color-tertiary-dark: #5643fa;
+
+$color-grey-light-1: #f7f7f7;
+$color-grey-light-2: #eee;
+
+$color-grey-dark: #777;
+$color-grey-dark-2: #999;
+$color-grey-dark-3: #333;
+
+$color-white: #fff;
+$color-black: #000;
+
+$color-red: #fc0000;
+
+// FONT
+$default-font-size: 1.6rem;
+
+// SHADOW
+$shadow: 0.5px 0.5px 0.5px #cdcdcd;
+
+// BORDER
+$border-pill: 50em;
+$border-rounded: 5px;
+$border-circle: 50%;
+
+// TRANSFORM
+$transform-middle: translate(-50%, -50%);
+
+// BREAKPOINTS
+$breakpoints: (
+ smallphone-and-down: "(max-width: 399px)",
+ phone-and-down: "(max-width: 575px)",
+ tablet-and-down: "(max-width: 767px)",
+ desktop-and-down: "(max-width: 991px)",
+ largedesktop-and-down: "(max-width: 1199px)",
+ extralarge-and-down: "(max-width: 1439px)",
+);
+
+// MARGIN-PADDINg
+
+$px-1: 0 3px;
+$px-2: 0 6px;
+$px-3: 0 9px;
+$px-4: 0 12px;
+
+$py-1: 3px 0;
+$py-2: 6px 0;
+$py-3: 9px 0;
+$py-4: 12px 0;
+
+$p-1: 3px;
+$p-2: 6px;
+$p-3: 9px;
+$p-4: 12px;
+
+$mx-1: 0 3px;
+$mx-2: 0 6px;
+$mx-3: 0 9px;
+$mx-4: 0 12px;
+
+$my-1: 3px 0;
+$my-2: 6px 0;
+$my-3: 9px 0;
+$my-4: 12px 0;
+
+$m-1: 3px;
+$m-2: 6px;
+$m-3: 9px;
+$m-4: 12px;
+
+$s-1: 3px;
+$s-2: 6px;
+$s-3: 9px;
+$s-4: 12px;
