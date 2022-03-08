@@ -1,0 +1,67 @@
+footer {
+ padding-top: 4rem;
+
+ .logo-list {
+  @include flex($justify: center, $align: center);
+
+  .logo-item {
+   height: 200px;
+   max-width: 350px;
+   border-bottom: 1px solid rgba($color-grey-dark, 0.2);
+   object-fit: cover;
+
+   &--sideBorder {
+    border-left: 1px solid rgba($color-grey-dark, 0.2);
+    border-right: 1px solid rgba($color-grey-dark, 0.2);
+   }
+   img {
+    width: 100%;
+   }
+  }
+ }
+
+ .footer-contain {
+  @include grid($column: repeat(4, 1fr));
+  padding: 3rem 0;
+ }
+
+ .footer-item {
+  list-style: none;
+  margin: $my-2;
+ }
+
+ .footer-link {
+  text-decoration: none;
+  color: $color-grey-dark-2;
+ }
+
+ .social-list {
+  @include flex($justify: flex-start, $align: center, $gap: 1rem);
+ }
+
+ .contact {
+  @include grid($column: repeat(2, 1fr), $row-gap: 1rem);
+
+  &__address {
+   @include flex($justify: flex-start, $align: center, $gap: 1rem);
+   grid-column: 1 /-1;
+  }
+
+  &__direct {
+   @include flex($justify: flex-start, $align: center, $gap: 1rem);
+  }
+ }
+
+ .footer-payment {
+  @include flex($justify: space-evenly, $align: center);
+  border-top: 1px solid rgba($color-grey-dark, 0.2);
+  padding: 2rem;
+
+  .payment-list {
+   i {
+    font-size: 2.5rem;
+    margin: 0 1.2rem;
+   }
+  }
+ }
+}

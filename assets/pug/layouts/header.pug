@@ -1,6 +1,7 @@
 - const navList = [{"title": "Tài khoản của tôi", "href": "#", "isActive": false},{"title": "Trạng thái đơn hàng", "href": "#", "isActive": true},{"title": "Danh sách đăng kí", "href": "#", "isActive": false},{"title": "Giỏ hàng", "href": "#", "isActive": false},{"title": "Đăng nhập", "href": "#", "isActive": false},{"title": "Đăng kí", "href": "#", "isActive": false}]
 - const menuList = [{"title": "Trang chủ", "href": "#", "isActive": false},{"title": "Rượu vang đỏ", "href": "#", "isActive": true},{"title": "Rượu trắng", "href": "#", "isActive": false},{"title": "Champagne", "href": "#", "isActive": false},{"title": "Thông tin", "href": "#", "isActive": false},{"title": "Blog", "href": "#", "isActive": false},{"title": "Liên hệ", "href": "#", "isActive": false}]
 
+
 mixin list-item(className,props)
    li(class=`${className}-item`) 
       a(class=`${className}-link ${props.isActive ? `${className}-link--active` : ''}` href=`${props.href}`) #{props.title} 
@@ -16,6 +17,6 @@ mixin header
             <i class="icon fa-solid fa-magnifying-glass"></i>
       img(class="hero" src="./assets/images/hero.jpg")
       div(class="menu")
-         img(class="menu__img" src="./assets/images/wine-hourse.png")
+         img(class="menu__img" src="./assets/images/logo-menu.jpg")
          for item in menuList 
             +list-item("menu",item)

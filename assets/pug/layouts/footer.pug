@@ -1,4 +1,58 @@
+- const inforDetails = [{"title" : "VỀ CHÚNG TÔI","href": "#"}, {"title" : "GIAO HÀNG","href": "#"},  {"title" : "CẢM NGHĨ","href": "#"}, {"title" : "LƯU TRỮ","href": "#"},{"title" : "CHÍNH SÁCH RIÊNG TƯ","href": "#"} ]
+- const buyDetails =  [{"title" : "VẬN CHUYỂN VÀ TRẢ HÀNG","href": "#"}, {"title" : "MUA HÀNG AN TOÀN","href": "#"},  {"title" : "LIÊN KẾT","href": "#"}, {"title" : "VẬN CHUYỂN QUỐC TẾ","href": "#"},{"title" : "DỊCH VỤ GIẢM GIÁ","href": "#"} ]
+-const socialList = [{"className": "fa-brands fa-twitter","href": "#"},{"className": "fa-brands fa-google-plus-g","href": "#"},{"className": "fa-brands fa-linkedin-in","href": "#"},{"className": "fa-brands fa-pinterest-p","href": "#"}]
+-const logoList=[{"img": "./assets/images/authentic.jpg"},{"img": "./assets/images/retrobrand.jpg", "sideBorder": true},{"img": "./assets/images/bearbrand.jpg"}]
+-const paymentList=["fa-brands fa-cc-mastercard","fa-brands fa-cc-visa","fa-brands fa-cc-paypal","fa-brands fa-google-pay"]
+-const contactList =[{"icon": "fa-solid fa-phone","detail":"(04) 0984444334"},{"icon": "fa-solid fa-phone","detail":"(04) 0984444334"},{"icon": "fa-solid fa-phone","detail":"(04) 0984444334"},{"icon": "fa-solid fa-inbox","detail":"winhourse@gmail.com"}]
+
+mixin detail-item(props)
+    li(class="footer-item") 
+        a(class="footer-link" href=`${props.href}`) #{props.title}
+mixin logo-item(props)
+    div(class=`logo-item ${props.sideBorder ? 'logo-item--sideBorder' : ''}`)
+        img(src=`${props.img}`)      
+
 mixin footer
     footer 
         .container 
-            h3 footer
+            div(class="logo-list")
+                for logo in logoList 
+                    +logo-item(logo)
+            div(class="footer-contain")
+                div(class="footer-infor")
+                    h3(class="heading-secondary") THÔNG TIN
+                    nav(class="footer-direction")
+                        ul 
+                            for item in inforDetails 
+                                +detail-item(item)
+                div(class="footer-buy")
+                    h3(class="heading-secondary") MUA HÀNG
+                    nav(class="footer-direction")
+                        ul
+                        for item in buyDetails 
+                            +detail-item(item)                 
+                div(class="footer-social")
+                    h3(class="heading-secondary") GỬI EMAIL
+                    p Gửi email cho chúng tôi để được hỗ trợ
+                    div(class="footer-send")
+                        +input({'placeholder': 'Enter your email'})
+                        +button({'type': 'arrow', 'title': 'GỬI'})
+                    div(class="social-list")    
+                        for brand in socialList 
+                            i(class=`${brand.className}`)    
+                div(class="footer-contact")
+                    h3(class="heading-secondary") LIÊN HỆ
+                    div(class="contact")
+                        div(class="contact__address")                  
+                            i(class="fa-solid fa-location-dot")
+                            p Tầng 4, tòa nhà Hanoi Group, số 442 Đội Cấn, P Cống Vị, Q Ba Đình, Hà Nội
+                        for contact in contactList 
+                            div(class="contact__direct") 
+                                i(class=`${contact.icon}`)
+                                p #{contact.detail} 
+
+        div(class="footer-payment")
+            p(class="copyright") Copyright 2008-2014 DKT Technology JSC
+            div(class="payment-list")
+                for payment in paymentList
+                    i(class=payment)

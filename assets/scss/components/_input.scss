@@ -1,0 +1,6 @@
+.input {
+ height: calc(#{$button-height} - 2px);
+ margin: $my-4;
+ border: 1px solid $color-grey-dark;
+ font-style: italic;
+}
