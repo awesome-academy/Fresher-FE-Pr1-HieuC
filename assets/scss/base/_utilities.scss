@@ -1,0 +1,11 @@
+.active {
+ color: $color-secondary-light;
+
+ &--under-line {
+  text-decoration: underline;
+ }
+}
+
+.icon {
+ color: $color-grey-dark-2;
+}
