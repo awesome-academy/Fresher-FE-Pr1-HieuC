@@ -1,0 +1,12 @@
+mixin blog(props)
+  div(class="blog")
+    img(src=`${props.img}` class="blog-img")
+    h4(class="heading-titary") #{props.title}
+    div(class="blog-detail")
+      p Đăng bởi #{props.author}
+      p #{props.date}
+      p #{props.countComment} Bình luận  
+    p(class="blog-description") #{props.desc}
+    p(class="blog-readmore") Read more
+    div(class="blog-hide")
+      i(class="fa-solid fa-link")

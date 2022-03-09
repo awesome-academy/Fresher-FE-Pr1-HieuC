@@ -1,39 +1,39 @@
 @mixin respond-to($breakpoint) {
- $raw-query: map-get($breakpoints, $breakpoint);
- @if $raw-query {
-  $query: if(type-of($raw-query) == "string", unquote($raw-query), inspect($raw-query));
-  @media #{$query} {
-   @content;
+  $raw-query: map-get($breakpoints, $breakpoint);
+  @if $raw-query {
+    $query: if(type-of($raw-query) == "string", unquote($raw-query), inspect($raw-query));
+    @media #{$query} {
+      @content;
+    }
   }
- }
 }
 
 @mixin flex($justify, $align, $direction: "row", $wrap: "wrap", $gap: 0) {
- display: flex;
- justify-content: $justify;
- align-items: $align;
- @if $direction != row {
-  flex-direction: $direction;
- }
- @if $gap != 0 {
-  gap: $gap;
- }
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  @if $direction != row {
+    flex-direction: $direction;
+  }
+  @if $gap != 0 {
+    gap: $gap;
+  }
 }
 
 @mixin grid($column, $col-gap: 0, $row-gap: 0) {
- display: grid;
- grid-template-columns: $column;
- @if $col-gap != 0 {
-  column-gap: $col-gap;
- }
- @if $row-gap != 0 {
-  row-gap: $row-gap;
- }
+  display: grid;
+  grid-template-columns: $column;
+  @if $col-gap != 0 {
+    column-gap: $col-gap;
+  }
+  @if $row-gap != 0 {
+    row-gap: $row-gap;
+  }
 }
 
 @mixin ab-translateMiddle($top, $left) {
- position: absolute;
- top: $top;
- left: $left;
- transform: $transform-middle;
+  position: absolute;
+  top: $top;
+  left: $left;
+  transform: $transform-middle;
 }

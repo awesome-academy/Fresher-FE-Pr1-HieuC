@@ -1,99 +1,87 @@
 header {
- position: relative;
- .nav {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  background-color: rgba(#cdcdcd, 0.3);
-  height: 4rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  position: relative;
 
-  @include respond-to(largedesktop-and-down) {
-   grid-template-columns: 3fr 2fr;
+  .nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(#cdcdcd, 0.3);
+    height: 4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include respond-to(largedesktop-and-down) {
+      grid-template-columns: 3fr 2fr;
+    }
+
+    @include respond-to(desktop-and-down) {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    .nav-list {
+      @include flex($justify: center, $align: center, $gap: 2rem);
+      list-style: none;
+
+      @include respond-to(largedesktop-and-down) {
+        gap: 1rem;
+      }
+
+      @include respond-to(desktop-and-down) {
+        gap: 0.7rem;
+      }
+    }
+    .nav-link {
+      color: $color-grey-light-1;
+      text-decoration: none;
+
+      &--active {
+        color: $color-secondary-light;
+        text-decoration: underline;
+      }
+    }
+
+    .nav-search {
+      @include flex($align: center, $justify: center);
+
+      i {
+        color: $color-grey-light-1;
+      }
+    }
   }
 
-  @include respond-to(desktop-and-down) {
-   grid-template-columns: 2fr 1fr;
+  .hero {
+    width: 100%;
   }
 
-  .nav-list {
-   @include flex($justify: center, $align: center, $gap: 2rem);
-   list-style: none;
+  .menu {
+    @include flex($justify: center, $align: center, $gap: 4rem);
+    height: 15rem;
+    background-color: $color-black;
 
-   @include respond-to(largedesktop-and-down) {
-    gap: 1rem;
-   }
+    @include respond-to(largedesktop-and-down) {
+      gap: 3rem;
+    }
 
-   @include respond-to(desktop-and-down) {
-    gap: 0.7rem;
-   }
+    @include respond-to(desktop-and-down) {
+      gap: 2rem;
+    }
+
+    &__img {
+      height: 100%;
+    }
+
+    &-item {
+      list-style: none;
+    }
+
+    &-link {
+      text-decoration: none;
+      font-size: 1.4rem;
+      color: $color-grey-light-1;
+
+      &--active {
+        color: $color-secondary-light;
+      }
+    }
   }
-  .nav-link {
-   color: $color-grey-light-1;
-   text-decoration: none;
-   &--active {
-    color: $color-secondary-light;
-    text-decoration: underline;
-   }
-  }
-
-  .nav-search {
-   position: relative;
-   @include flex($align: center, $justify: center);
-   &:after {
-    content: "Tìm kiếm ở đây";
-    @include ab-translateMiddle($top: 50%, $left: 50%);
-    font-style: italic;
-    color: #fff;
-   }
-
-   i {
-    color: $color-grey-light-1;
-   }
-  }
-
-  .nav-input {
-   position: relative;
-   background-color: inherit;
-   border: none;
-   color: $color-white;
-   border-left: 1px solid $color-white;
-  }
- }
-
- .hero {
-  width: 100%;
- }
-
- .menu {
-  @include flex($justify: center, $align: center, $gap: 4rem);
-  height: 15rem;
-  background-color: $color-black;
-
-  @include respond-to(largedesktop-and-down) {
-   gap: 3rem;
-  }
-
-  @include respond-to(desktop-and-down) {
-   gap: 2rem;
-  }
-
-  &__img {
-   height: 100%;
-  }
-
-  &-item {
-   list-style: none;
-  }
-
-  &-link {
-   text-decoration: none;
-   font-size: 1.4rem;
-   color: $color-grey-light-1;
-   &--active {
-    color: $color-secondary-light;
-   }
-  }
- }
 }

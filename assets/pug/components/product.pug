@@ -1,0 +1,18 @@
+mixin product(props)
+  div(class=`product ${props.state ? `product-state product-state--${props.state}` : ''}`)
+    img(src=`${props.img}` class="product-img")
+    h4(class="heading-titary") #{props.title}
+    div(class="product-price")
+      p(class="product-price--discount") #{props.discountPrice}
+      p(class="product-price--initial") #{props.initialPrice}
+    +button({"title": "ADD TO CART", "size": "xxl"})
+    p(class="product-status") #{props.state ? props.state : null}
+    div(class="product-hide") 
+      div(class="product-hide__action")
+        i(class="fa-solid fa-heart")
+        p Yêu thích
+      div(class="product-hide__action")
+        i(class="fa-solid fa-code-compare")
+        p So sánh
+      div(class="product-hide__action")
+      i(class="fa-solid fa-link")

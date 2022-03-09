@@ -3,20 +3,20 @@
 
 
 mixin list-item(className,props)
-   li(class=`${className}-item`) 
-      a(class=`${className}-link ${props.isActive ? `${className}-link--active` : ''}` href=`${props.href}`) #{props.title} 
+  li(class=`${className}-item`) 
+    a(class=`${className}-link ${props.isActive ? `${className}-link--active` : ''}` href=`${props.href}`) #{props.title} 
 
 mixin header
-   header
-      nav(class="nav")
-         ul(class="nav-list")
-            for item in navList 
-               +list-item("nav",item)
-         div(class="nav-search") 
-            input( class="nav-input")
-            <i class="icon fa-solid fa-magnifying-glass"></i>
-      img(class="hero" src="./assets/images/hero.jpg")
-      div(class="menu")
-         img(class="menu__img" src="./assets/images/logo-menu.jpg")
-         for item in menuList 
-            +list-item("menu",item)
+  header
+    nav(class="nav")
+      ul(class="nav-list")
+        for item in navList 
+          +list-item("nav",item)
+      div(class="nav-search")
+        +input({'placeholder': 'Tìm kiếm ở đây',"nonebg": true})
+        <i class="icon fa-solid fa-magnifying-glass"></i>
+    img(class="hero" src="./assets/images/hero.jpg")
+    div(class="menu")
+      img(class="menu__img" src="./assets/images/logo-menu.jpg")
+      for item in menuList 
+        +list-item("menu",item)

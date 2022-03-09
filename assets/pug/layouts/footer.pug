@@ -6,53 +6,53 @@
 -const contactList =[{"icon": "fa-solid fa-phone","detail":"(04) 0984444334"},{"icon": "fa-solid fa-phone","detail":"(04) 0984444334"},{"icon": "fa-solid fa-phone","detail":"(04) 0984444334"},{"icon": "fa-solid fa-inbox","detail":"winhourse@gmail.com"}]
 
 mixin detail-item(props)
-    li(class="footer-item") 
-        a(class="footer-link" href=`${props.href}`) #{props.title}
+  li(class="footer-item") 
+    a(class="footer-link" href=`${props.href}`) #{props.title}
 mixin logo-item(props)
-    div(class=`logo-item ${props.sideBorder ? 'logo-item--sideBorder' : ''}`)
-        img(src=`${props.img}`)      
+  div(class=`logo-item ${props.sideBorder ? 'logo-item--sideborder' : ''}`)
+    img(src=`${props.img}`)      
 
 mixin footer
-    footer 
-        .container 
-            div(class="logo-list")
-                for logo in logoList 
-                    +logo-item(logo)
-            div(class="footer-contain")
-                div(class="footer-infor")
-                    h3(class="heading-secondary") THÔNG TIN
-                    nav(class="footer-direction")
-                        ul 
-                            for item in inforDetails 
-                                +detail-item(item)
-                div(class="footer-buy")
-                    h3(class="heading-secondary") MUA HÀNG
-                    nav(class="footer-direction")
-                        ul
-                        for item in buyDetails 
-                            +detail-item(item)                 
-                div(class="footer-social")
-                    h3(class="heading-secondary") GỬI EMAIL
-                    p Gửi email cho chúng tôi để được hỗ trợ
-                    div(class="footer-send")
-                        +input({'placeholder': 'Enter your email'})
-                        +button({'type': 'arrow', 'title': 'GỬI'})
-                    div(class="social-list")    
-                        for brand in socialList 
-                            i(class=`${brand.className}`)    
-                div(class="footer-contact")
-                    h3(class="heading-secondary") LIÊN HỆ
-                    div(class="contact")
-                        div(class="contact__address")                  
-                            i(class="fa-solid fa-location-dot")
-                            p Tầng 4, tòa nhà Hanoi Group, số 442 Đội Cấn, P Cống Vị, Q Ba Đình, Hà Nội
-                        for contact in contactList 
-                            div(class="contact__direct") 
-                                i(class=`${contact.icon}`)
-                                p #{contact.detail} 
+  footer 
+    .container 
+      div(class="logo-list")
+        for logo in logoList 
+          +logo-item(logo)
+      div(class="footer-contain")
+        div(class="footer-infor")
+          h3(class="heading-secondary") THÔNG TIN
+          nav(class="footer-direction")
+            ul 
+              for item in inforDetails 
+                +detail-item(item)
+        div(class="footer-buy")
+          h3(class="heading-secondary") MUA HÀNG
+          nav(class="footer-direction")
+            ul
+            for item in buyDetails 
+              +detail-item(item)                 
+        div(class="footer-social")
+          h3(class="heading-secondary") GỬI EMAIL
+          p Gửi email cho chúng tôi để được hỗ trợ
+          div(class="footer-send")
+            +input({'placeholder': 'Enter your email'})
+            +button({'type': 'arrow', 'title': 'GỬI'})
+          div(class="social-list")    
+            for brand in socialList 
+              i(class=`${brand.className}`)    
+        div(class="footer-contact")
+          h3(class="heading-secondary") LIÊN HỆ
+          div(class="contact")
+            div(class="contact__address")                  
+              i(class="fa-solid fa-location-dot")
+              p Tầng 4, tòa nhà Hanoi Group, số 442 Đội Cấn, P Cống Vị, Q Ba Đình, Hà Nội
+            for contact in contactList 
+              div(class="contact__direct") 
+                i(class=`${contact.icon}`)
+                p #{contact.detail} 
 
-        div(class="footer-payment")
-            p(class="copyright") Copyright 2008-2014 DKT Technology JSC
-            div(class="payment-list")
-                for payment in paymentList
-                    i(class=payment)
+    div(class="footer-payment")
+      p(class="copyright") Copyright 2008-2014 DKT Technology JSC
+      div(class="payment-list")
+        for payment in paymentList
+          i(class=payment)

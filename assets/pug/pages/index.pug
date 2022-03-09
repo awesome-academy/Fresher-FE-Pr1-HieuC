@@ -1,6 +1,75 @@
 extends ../base/layout.pug
 
 block title 
- title Hello
+  title Hello
 
-block content 
+block content
+  -const countList = [{"title": "233", "type": "Ngày"},{"title": "15","type": "Giờ"},{"title": "45","type": "Phút"},{"title": "44", "type": "Giây"}]
+  -const newProductList= [{"title": "Rượu vang đà lạt", "discountPrice": "370.000","initialPrice": "450.000","img":"./assets/images/product-1.jpg","state": "new"},{"title": "Rượu vang đà lạt", "discountPrice": "370.000","initialPrice": "450.000","img":"./assets/images/product-2.jpg","state": "hot"},{"title": "Rượu vang đà lạt", "discountPrice": "370.000","initialPrice": "450.000","img":"./assets/images/product-3.jpg","state": "sale"},{"title": "Rượu vang đà lạt", "discountPrice": "370.000","initialPrice": "450.000","img":"./assets/images/product-4.jpg"}]
+  -const galleryImgs = [{"source": "./assets/images/gal-1.jpg"},{"source": "./assets/images/gal-2.jpg"},{"source": "./assets/images/gal-3.jpg"},{"source": "./assets/images/gal-4.jpg"},{"source": "./assets/images/gal-5.jpg"},{"source": "./assets/images/gal-6.jpg"},{"source": "./assets/images/gal-2.jpg"},{"source": "./assets/images/gal-1.jpg"}]
+  - const blogList = [{"img": "./assets/images/gal-3.jpg","title": "VANG THĂNG LONG CLASSIC","author":"Giangle","date":"30/6/2021","countComment":"60","desc":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores voluptatem inventore architecto sapiente repellat possimus qui maiores numquam eligendi"},{"img": "./assets/images/gal-3.jpg","title": "VANG THĂNG LONG CLASSIC","author":"Giangle","date":"30/6/2021","countComment":"60","desc":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores voluptatem inventore architecto sapiente repellat possimus qui maiores numquam eligendi"}]
+  -const feedbacks = [{"avatar": "./assets/images/cus-1.jpg", "name": "GIANG LY", "job":"Graphic design","feed": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad explicabo similique sint.","state": "active"},{"avatar": "./assets/images/cus-2.jpg", "name": "THU HUONG", "job":"Architect","feed": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad explicabo similique sint."},{"avatar": "./assets/images/cus-3.jpg", "name": "THU TRANG", "job":"Egineer","feed": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad explicabo similique sint."}]
+
+  mixin feedback-item(props)
+    div(class=`carousel-item ${props.state ? `active` : ''}`)
+      p #{props.feed}
+      p(class="feedback-readmore") Readmore
+      div(class="feedback-customer")
+        img(src=`${props.avatar}`)
+        h5(heading-titary) #{props.name}
+        p #{props.job}
+
+  section(class="intro")
+    img(src="./assets/images/intro.jpg")
+    div(class="intro-content")
+      h2(class="heading-secondary heading-decoration heading-decoration--dash") GIỚI THIỆU
+      p(class="intro-text") Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+  section(class="hot")
+    .container 
+      div(class="hot-contain")
+        img(class="hot-banner" src="./assets/images/hot-sale-banner.jpg")
+        div(class="typical")
+          img(class="typical-img" src="./assets/images/hot-image.jpg")
+          div(class="typical-content")
+            div(class="typical-title")
+              h2(class="heading-titary heading-decoration heading-decoration--arrow") RƯỢU NHO NĂM 1987
+            h5(class="typical-price") 330.000 
+            +button({"title": "Add to cart","size": "lg"})
+            p(class="typical-description") Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam reiciendis quis suscipit, impedit, illum beatae, eligendi ipsam accusamus dolor laborum necessitatibus optio modi molestiae ipsa. Aliquid vitae doloremque earum enim?
+            div(class="typical-count")
+              for element in countList 
+                div(class="typical-count__ele") 
+                  p #{element.title}
+                  p #{element.type}
+  section(class="new-product")
+    .container
+      h3(class="heading-titary heading-decoration heading-decoration--dash") SẢN PHẨM MỚI
+      div(class="product-list")   
+        for product in newProductList 
+          +product(product)
+  section(class="gallery")
+    for image in galleryImgs 
+      img(class="gallery-img" src=`${image.source}`) 
+  section(class="top-product")
+    .container
+      h3(class="heading-titary heading-decoration heading-decoration--dash") SẢN PHẨM BÁN CHẠY
+      div(class="product-list")   
+        for product in newProductList 
+          +product(product)    
+  section(class="others")
+    .container
+      div(class="hightlight-blog")
+        h3(class="heading-titary heading-decoration heading-decoration--dash") TIN TỨC &amp; BLOG
+        div(class="top-blog")
+          for item in blogList 
+            +blog(item)
+
+      div(class="feedback")
+        h3(class="heading-titary heading-decoration heading-decoration--dash") KHÁCH HÀNG
+        div(class="feedback-logo")
+          i(class="fa-solid fa-quote-right")
+        div(id="carousel1" class="carousel slide" data-bs-ride="carousel")
+          +carousel-indicator("carousel1")
+          div(class="carousel-inner")
+            for feedback in feedbacks 
+              +feedback-item(feedback)
