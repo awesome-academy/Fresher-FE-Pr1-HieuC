@@ -20,6 +20,17 @@
  }
 }
 
+@mixin grid($column, $col-gap: 0, $row-gap: 0) {
+ display: grid;
+ grid-template-columns: $column;
+ @if $col-gap != 0 {
+  column-gap: $col-gap;
+ }
+ @if $row-gap != 0 {
+  row-gap: $row-gap;
+ }
+}
+
 @mixin ab-translateMiddle($top, $left) {
  position: absolute;
  top: $top;

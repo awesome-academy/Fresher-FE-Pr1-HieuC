@@ -1,0 +1,21 @@
+.button {
+ position: relative;
+ border: none;
+ height: $button-height;
+ width: $button-width;
+ color: $color-white;
+ background-color: $color-black;
+
+ &--arrow {
+  &:after {
+   content: "";
+   position: absolute;
+   top: 50%;
+   left: 100%;
+   transform: translate(0, -50%);
+   border-top: calc(#{$button-width} / 4) solid transparent;
+   border-left: calc(#{$button-width} / 2) solid $color-black;
+   border-bottom: calc(#{$button-width} / 4) solid transparent;
+  }
+ }
+}
