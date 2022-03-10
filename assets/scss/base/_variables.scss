@@ -37,12 +37,12 @@ $transform-middle: translate(-50%, -50%);
 
 // BREAKPOINTS
 $breakpoints: (
- smallphone-and-down: "(max-width: 399px)",
- phone-and-down: "(max-width: 575px)",
- tablet-and-down: "(max-width: 767px)",
- desktop-and-down: "(max-width: 991px)",
- largedesktop-and-down: "(max-width: 1199px)",
- extralarge-and-down: "(max-width: 1439px)",
+  smallphone-and-down: "(max-width: 399px)",
+  phone-and-down: "(max-width: 575px)",
+  tablet-and-down: "(max-width: 767px)",
+  desktop-and-down: "(max-width: 991px)",
+  largedesktop-and-down: "(max-width: 1199px)",
+  extralarge-and-down: "(max-width: 1439px)",
 );
 
 // MARGIN-PADDINg
@@ -85,3 +85,13 @@ $s-4: 12px;
 // BUTTON
 $button-height: 2.5rem;
 $button-width: 5rem;
+
+// HOT
+$contain-height: 50rem;
+
+// PRODUCT
+$image-height: 20rem;
+$square-side: 5rem;
+
+// Z-INDEX
+$z-normal: 10;

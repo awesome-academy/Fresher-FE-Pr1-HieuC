@@ -1,0 +1,107 @@
+.product {
+  @include flex($justify: space-between, $direction: column, $align: center, $gap: 1rem);
+  padding: 1rem 2rem;
+  position: relative;
+
+  &:hover {
+    .product-hide {
+      opacity: 1;
+    }
+  }
+
+  &-state {
+    &::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 0px solid transparent;
+      border-bottom: 50px solid transparent;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &::before {
+      content: "";
+      width: calc(50px * 1.41);
+      height: 1px;
+      background-color: black;
+      position: absolute;
+      top: calc(#{$square-side} / 2 + 0.25rem);
+      left: calc(#{$square-side} / 2 + 0.25rem);
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &--new {
+      &::after {
+        border-left: $square-side solid $color-primary-light;
+      }
+
+      &::before {
+        background-color: $color-primary-light;
+      }
+    }
+
+    &--sale {
+      &::after {
+        border-left: $square-side solid $color-secondary-light;
+      }
+
+      &::before {
+        background-color: $color-secondary-light;
+      }
+    }
+
+    &--hot {
+      &::after {
+        border-left: $square-side solid $color-red;
+      }
+
+      &::before {
+        background-color: $color-red;
+      }
+    }
+  }
+
+  &-img {
+    height: $image-height;
+  }
+
+  &-price {
+    @include flex($justify: center, $align: flex-end, $gap: 1rem);
+
+    &--initial {
+      color: $color-grey-dark-2;
+      text-decoration: line-through;
+    }
+
+    &--discount {
+      color: $color-secondary-light;
+      font-size: 2rem;
+    }
+  }
+
+  &-hide {
+    @include ab-translateMiddle($top: $image-height, $left: 50%);
+    @include flex($justify: space-evenly, $align: center);
+    color: $color-white;
+    padding: $s-2 0;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    background-color: $color-black;
+    transition: all 0.5s;
+
+    &__action {
+      @include flex($justify: space-between, $align: center, $gap: 0.5rem);
+    }
+  }
+
+  &-status {
+    @include ab-translateMiddle($top: 1rem, $left: 1rem);
+    position: absolute;
+    color: $color-white;
+    z-index: $z-normal;
+    transform: rotate(-45deg);
+  }
+}

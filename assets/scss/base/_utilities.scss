@@ -1,15 +1,38 @@
 .active {
- color: $color-secondary-light;
+  color: $color-secondary-light;
 
- &--under-line {
-  text-decoration: underline;
- }
+  &--under-line {
+    text-decoration: underline;
+  }
 }
 
 .icon {
- color: $color-grey-dark-2;
+  color: $color-grey-dark-2;
 }
 
 .heading-secondary {
- margin-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+.heading-titary {
+  padding: 0.5rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.heading-decoration {
+  position: relative;
+  &--dash {
+    &::after {
+      @include ab-translateMiddle(120%, 50%);
+      content: url("../images/dash-icon.png");
+    }
+  }
+
+  &--arrow {
+    &::after {
+      position: absolute;
+      top: 110%;
+      left: 0;
+      content: url("../images/arrow-icon.png");
+    }
+  }
 }

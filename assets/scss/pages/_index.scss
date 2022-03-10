@@ -1,0 +1,142 @@
+.intro {
+  position: relative;
+
+  &-content {
+    text-align: center;
+    @include ab-translateMiddle(50%, 50%);
+  }
+}
+
+.hot {
+  padding-top: 2rem;
+  position: relative;
+  padding-bottom: calc(#{$contain-height / 2});
+
+  &-contain {
+    position: relative;
+    margin: 0 auto;
+    height: $contain-height;
+
+    .typical {
+      @include ab-translateMiddle(100%, 50%);
+      background-color: $color-white;
+      height: $contain-height;
+      padding: 5rem;
+      display: flex;
+      width: 50%;
+
+      &-content {
+        @include flex($justify: flex-start, $direction: column, $align: start, $gap: 2rem);
+        width: 50%;
+        margin-left: auto;
+      }
+
+      &-price {
+        margin: 2rem 0;
+        font-size: 2rem;
+        color: $color-secondary-light;
+      }
+
+      &-count {
+        @include grid($column: repeat(2, 1fr));
+
+        &__ele {
+          @include flex($justify: center, $align: center, $direction: column);
+          min-width: 12rem;
+          min-height: 9rem;
+          border: 1px solid $color-secondary-light;
+          font-size: 2rem;
+          color: $color-secondary-light;
+        }
+      }
+    }
+  }
+
+  &-banner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.new-product {
+  padding: 5rem 0;
+  text-align: center;
+
+  .product-list {
+    @include flex($justify: space-evenly, $align: center, $gap: 2rem);
+    margin-top: 2rem;
+  }
+}
+
+.gallery {
+  @include grid($column: repeat(4, 1fr));
+  margin: 2rem 0;
+
+  &-img {
+    object-fit: cover;
+    height: 25rem;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.top-product {
+  padding: 5rem 0;
+  text-align: center;
+
+  .product-list {
+    @include flex($justify: space-evenly, $align: center, $gap: 2rem);
+    margin-top: 2rem;
+  }
+}
+
+.others {
+  text-align: center;
+
+  .container {
+    @include grid($column: 2fr 1fr);
+  }
+
+  .top-blog {
+    @include flex($justify: center, $align: center, $gap: 1rem);
+    padding-top: 2rem;
+  }
+
+  .feedback {
+    @include flex($justify: flex-start, $align: center, $direction: column, $gap: 1rem);
+    color: $color-black;
+
+    &-logo {
+      padding: 2px;
+      background-color: $color-secondary-light;
+      height: 3rem;
+      width: 3rem;
+      border-radius: 50%;
+
+      i {
+        color: $color-white;
+      }
+    }
+
+    &-customer {
+      width: 100%;
+
+      img {
+        height: 15rem;
+        width: 15rem;
+        border-radius: 5px;
+        object-fit: cover;
+      }
+    }
+
+    &-readmore {
+      color: $color-grey-dark;
+    }
+  }
+}
