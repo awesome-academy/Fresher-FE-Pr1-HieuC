@@ -1,0 +1,14 @@
+.breadcrumb {
+  &-item {
+    a {
+      text-decoration: none;
+      color: $color-grey-dark-2;
+    }
+
+    &:last-child {
+      a {
+        color: $color-secondary-light;
+      }
+    }
+  }
+}

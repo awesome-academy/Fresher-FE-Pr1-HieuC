@@ -1,0 +1,6 @@
+mixin color-picker(colorList)
+  div(class="color-picker")
+    h6 MÀU SẮC
+    div(class="color-list")
+      for color in colorList 
+        div(class=`color-item color-item--${color.color} ${color.isActive ? `color-item--active` : ''}`)

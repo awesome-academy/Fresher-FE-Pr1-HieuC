@@ -1,0 +1,9 @@
+mixin rating(props)
+  div(class="product-star")
+    for count,i  in [0,1,2,3,4]
+      if (props.grade >= count)
+        i(class="fa-solid fa-star star")
+      else if (props.grade < count)
+        i(class="fa-regular fa-star ")
+
+

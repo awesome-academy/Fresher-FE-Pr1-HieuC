@@ -1,0 +1,123 @@
+.product-detail {
+  .product-contain {
+    @include grid($column: repeat(2, 1fr));
+    width: 100%;
+  }
+
+  .product-image {
+    @include grid($column: 1fr 7fr);
+    width: 100%;
+    margin-bottom: 3rem;
+    border: 0.5px solid rgba($color-grey-dark, 0.3);
+
+    &__list {
+      @include flex($justify: center, $align: center, $direction: column, $gap: 2rem);
+      position: relative;
+      border-right: 0.5px solid rgba($color-grey-dark, 0.3);
+      height: 100%;
+    }
+
+    &__secondary {
+      height: 7rem;
+      transition: all 0.2s;
+
+      &--active {
+        border: 2.5px solid $color-secondary-light;
+      }
+    }
+
+    &__main {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  .product-content {
+    @include flex($justify: flex-start, $align: flex-start, $direction: column, $gap: 3rem);
+    padding-left: 1.5rem;
+
+    .product-price {
+      font-size: 2rem;
+      color: $color-secondary-light;
+    }
+
+    .product-review {
+      @include flex($justify: flex-start, $align: center, $gap: 1rem);
+      border-top: 0.5px solid rgba($color-grey-dark, 0.3);
+      border-bottom: 0.5px solid rgba($color-grey-dark, 0.3);
+      color: $color-grey-dark;
+
+      button {
+        color: $color-grey-dark;
+      }
+
+      &__count {
+        padding-right: 1rem;
+        border-right: 1px solid rgba($color-grey-dark, 0.3);
+      }
+    }
+
+    .product-addcart {
+      @include flex($align: center, $justify: flex-start, $gap: 2rem);
+
+      .quantity {
+        .num-in {
+          @include flex($align: center, $justify: space-around);
+          background-color: rgba($color-grey-dark, 0.3);
+          height: $button-height;
+          width: 12rem;
+          border-radius: 5px;
+
+          &__input {
+            height: 70%;
+            width: 50%;
+            text-align: center;
+            border: none;
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+
+    .product-description {
+      &__text {
+        width: 50%;
+      }
+    }
+
+    .product-social {
+      @include flex($align: center, $justify: flex-start, $gap: 2rem);
+
+      &__logo {
+        height: 1.5rem;
+      }
+    }
+  }
+
+  .product-about {
+    @include grid($column: 2fr 1fr);
+    grid-column: 1/ -1;
+
+    &__img {
+      width: 70%;
+    }
+
+    &__bar {
+      @include flex($align: center, $justify: flex-start, $gap: 1rem);
+    }
+
+    &__more {
+      padding-right: 5rem;
+    }
+  }
+}
+
+.relate-product {
+  padding: 5rem 0;
+  text-align: center;
+
+  .product-list {
+    @include flex($justify: space-evenly, $align: center, $gap: 2rem);
+    margin-top: 2rem;
+  }
+}

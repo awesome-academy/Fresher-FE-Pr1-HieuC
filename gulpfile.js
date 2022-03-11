@@ -10,7 +10,7 @@ const { src, dest, parallel, watch, series } = require("gulp"),
 const FilesPath = {
   sassFiles: "assets/scss/**",
   htmlFiles: "*.html",
-  pugFiles: "assets/pug/pages/**",
+  pugFiles: "assets/pug/pages/*.pug*",
 };
 
 const { sassFiles, htmlFiles, pugFiles } = FilesPath;
@@ -28,7 +28,6 @@ function sassTask() {
 function pugTask() {
   return src(pugFiles)
     .pipe(pug({ pretty: true }))
-    .pipe(concat("index.html"))
     .pipe(dest("./"))
     .pipe(browserSync.stream());
 }
