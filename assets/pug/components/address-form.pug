@@ -1,0 +1,22 @@
+mixin existAddress(address)
+  div(class="address-exists")
+    each value,key in address 
+      label=value.title 
+        p #{value.content}
+    p(class="address-exists__action") Chỉnh sửa địa chỉ
+
+mixin modifiedAddress(props)
+  div(class="address-modified")
+    if props.type == "update"
+      h6 ĐỊA CHỈ CỦA BẠN
+      each value,key in props.address 
+        +formInput({"label": `${value.title}`,"type": "text","value": `${value.content}` }) 
+      div(class="address-modified__button")    
+    else if props.type == "add"
+      p(class="address-modified__action") Thêm địa chỉ
+      each value,key in props.address 
+        +formInput({"label": `${value.title}`,"type": "text" })
+    +checkBox({"id": "auto-settting-2", "label": "Đặt làm địa chỉ mặc dịnh"})
+    div(class="address-modified__button")
+      +button({"title": "Cập nhật địa chỉ","size": "xxl","type": "submit"})
+      +button({"title": "Xóa","size": "lg","type": "submit"}) 
