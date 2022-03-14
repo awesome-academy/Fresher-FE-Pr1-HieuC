@@ -1,0 +1,19 @@
+extends ../base/layout.pug
+
+block title 
+  title Address
+
+block content 
+  -const addressCrumb = [{"content": "Trang chủ", "href": "#"},{"content": "Địa chỉ", "href": "#"}]
+  -const addressList = [{"name": {"title": "Tên", "content": "Giang"},"lastName": {"title": "Họ và tên đệm", "content": "Nguyễn Thanh"},"company": {"title": "Công ty", "content": "Công ty cổ phần DKT"},"addDetails": {"title": "Địa chỉ", "content": "124 Yên Lãng Cầu Giấy"},"city": {"title": "Thành phố", "content": "Hà Nội"},"nation": {"title": "Quốc tịch", "content": "Việt Nam"},"zipcode": {"title": "Zipcode", "content": "100000"},"phone": {"title": "Phone", "content": "09855223355"}},{"name": {"title": "Tên", "content": "Giang"},"lastName": {"title": "Họ và tên đệm", "content": "Nguyễn Thanh"},"company": {"title": "Công ty", "content": "Công ty cổ phần DKT"},"addDetails": {"title": "Địa chỉ", "content": "124 Yên Lãng Cầu Giấy"},"city": {"title": "Thành phố", "content": "Hà Nội"},"nation": {"title": "Quốc tịch", "content": "Việt Nam"},"zipcode": {"title": "Zipcode", "content": "100000"},"phone": {"title": "Phone", "content": "09855223355"}}]
+  -const currentAddress = {"name": {"title": "Tên", "content": "Giang"},"lastName": {"title": "Họ và tên đệm", "content": "Nguyễn Thanh"},"company": {"title": "Công ty", "content": "Công ty cổ phần DKT"},"addDetails": {"title": "Địa chỉ", "content": "124 Yên Lãng Cầu Giấy"},"city": {"title": "Thành phố", "content": "Hà Nội"},"nation": {"title": "Quốc tịch", "content": "Việt Nam"},"zipcode": {"title": "Zipcode", "content": "100000"},"phone": {"title": "Phone", "content": "09855223355"}}                  
+
+  section(class="address")
+    .container
+      +breadcrumb(addressCrumb)
+      h4(class="heading-titary heading-decoration heading-decoration--arrow") ĐỊA CHỈ
+      div(class="address-container")
+        +modifiedAddress({"address": currentAddress, "type": "update"})
+        +modifiedAddress({"address": currentAddress, "type": "add"})
+        for item in addressList
+          +existAddress(item)

@@ -21,12 +21,18 @@
   margin: 1.5rem 0;
 
   label {
-    @include flex($justify: space-between, $align: center, $gap: 1rem);
+    @include grid($column: 12rem 1fr);
   }
 
   input {
     width: 90%;
+    padding-left: 1rem;
     height: 2rem;
     border: 1px solid rgba($color-grey-dark-2, 0.3);
   }
+}
+
+.input-checkbox {
+  @include flex($justify: flex-start, $align: center, $gap: 1rem);
+  color: $color-grey-dark-2;
 }

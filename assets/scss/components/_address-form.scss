@@ -1,0 +1,30 @@
+.address-modified {
+  &__button {
+    @include flex($align: center, $justify: center, $gap: 1rem);
+  }
+
+  &__action {
+    text-decoration: underline;
+    font-style: italic;
+    color: $color-tertiary-light;
+  }
+}
+
+.address-exists {
+  @include flex($justify: flex-start, $align: flex-start, $direction: column, $gap: 1rem);
+  grid-column: 1 /-1;
+  width: 50%;
+  padding: 1rem 0;
+  border-top: 1px solid rgba($color-grey-dark-2, 0.3);
+
+  label {
+    @include grid($column: 12rem 1fr);
+  }
+
+  &__action {
+    text-decoration: underline;
+    font-style: italic;
+    color: $color-tertiary-light;
+    text-align: right;
+  }
+}
