@@ -16,7 +16,7 @@ mixin modifiedAddress(props)
       p(class="address-modified__action") Thêm địa chỉ
       each value,key in props.address 
         +formInput({"label": `${value.title}`,"type": "text" })
-    +checkBox({"id": "auto-settting-2", "label": "Đặt làm địa chỉ mặc dịnh"})
+    +checkBox({"label": "Đặt làm địa chỉ mặc dịnh"})
     div(class="address-modified__button")
       +button({"title": "Cập nhật địa chỉ","size": "xxl","type": "submit"})
       +button({"title": "Xóa","size": "lg","type": "submit"}) 

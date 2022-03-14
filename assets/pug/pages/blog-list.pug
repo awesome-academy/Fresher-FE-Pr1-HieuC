@@ -1,0 +1,16 @@
+extends ../base/layout.pug
+
+block title 
+  title Blogs
+
+block content 
+  -const blogsCrumb = [{"content": "Trang chủ", "href": "#"},{"content": "Blog", "href": "#"}]
+  -const blogListItem = {"img": "./assets/images/gal-3.jpg","title": "VANG THĂNG LONG CLASSIC","author":"Giangle","date":"30/6/2021","countComment":"60","desc":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores voluptatem inventore architecto sapiente repellat possimus qui maiores numquam eligendi"}
+
+  section(class="blog-list")
+    .container
+      +breadcrumb(blogsCrumb)
+      h4(class="heading-titary heading-decoration heading-decoration--arrow") BLOG
+      div(class="blogs-container")
+        each blogItem in Array(9)
+          +blog(blogListItem)

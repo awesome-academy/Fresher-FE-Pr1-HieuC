@@ -5,11 +5,19 @@
   overflow: hidden;
 
   &:hover {
+    cursor: pointer;
+
     .blog-hide {
       opacity: 1;
     }
+
     &::after {
       opacity: 1;
+    }
+
+    .heading-titary,
+    .blog-readmore {
+      color: $color-secondary-light;
     }
   }
 
@@ -39,6 +47,7 @@
     p {
       padding-right: $s-3;
       color: $color-grey-dark-2;
+
       &:not(:last-child) {
         border-right: 1px solid $color-grey-dark-2;
       }
