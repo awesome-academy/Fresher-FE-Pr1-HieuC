@@ -1,0 +1,40 @@
+.color-picker {
+  .color-list {
+    @include flex($justify: flex-start, $align: center, $gap: 1rem);
+  }
+
+  .color-item {
+    position: relative;
+    height: 3rem;
+    width: 3rem;
+
+    &::after {
+      @include ab-translateMiddle(50%, 50%);
+      content: "";
+      height: 2.6rem;
+      width: 2.6rem;
+    }
+
+    &--green {
+      &::after {
+        background-color: $color-primary-light;
+      }
+    }
+
+    &--red {
+      &::after {
+        background-color: $color-secondary-dark;
+      }
+    }
+
+    &--orange {
+      &::after {
+        background-color: $color-red;
+      }
+    }
+
+    &--active {
+      border: 0.5px solid $color-black;
+    }
+  }
+}

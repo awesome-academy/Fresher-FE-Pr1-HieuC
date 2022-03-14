@@ -1,0 +1,6 @@
+mixin breadcrumb(list)
+  nav(class="breadcrumb")
+    ol(class="breadcrumb")
+      for item in list 
+        li(class="breadcrumb-item") 
+          a(href=`${item.href}`) #{item.content}

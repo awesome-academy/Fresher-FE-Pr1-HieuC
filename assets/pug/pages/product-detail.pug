@@ -1,0 +1,62 @@
+extends ../base/layout.pug
+
+block title 
+  title Product Detail
+
+block content
+
+  -const productDetailBreadcrum = [{"content": "Trang chủ", "href": "#"},{"content": "Sản phẩm", "href": "#"},{"content": "Rượu vang đỏ", "href": "#"}]
+  -const newProductList= [{"title": "Rượu vang đà lạt", "discountPrice": "370.000","initialPrice": "450.000","img":"./assets/images/product-1.jpg","state": "new"},{"title": "Rượu vang đà lạt", "discountPrice": "370.000","initialPrice": "450.000","img":"./assets/images/product-2.jpg","state": "hot"},{"title": "Rượu vang đà lạt", "discountPrice": "370.000","initialPrice": "450.000","img":"./assets/images/product-3.jpg","state": "sale"},{"title": "Rượu vang đà lạt", "discountPrice": "370.000","initialPrice": "450.000","img":"./assets/images/product-4.jpg"}]
+  -const colorList=[{"color": "red", "isActive": false},{"color": "green", "isActive": true},{"color": "orange", "isActive": false}]
+  -const sizeList = [{"content": "To"},{"content": "Nhỏ"}]
+  -const imageList = [{"img":"assets/images/1.jpg"},{"img":"assets/images/2.jpg"},{"img":"assets/images/3.jpg","isActive": true},{"img":"assets/images/4.jpg"},{"img":"assets/images/5.jpg"}]
+  -const productSocialList = [{"img": "./assets/images/facebook-logo.png"},{"img": "./assets/images/twitter-logo.png"},{"img": "./assets/images/google-logo.png"}]
+
+  .container
+    +breadcrumb(productDetailBreadcrum)
+  section(class="product-detail")
+    .container  
+      div(class="product-contain")
+        div(class="product-image") 
+          div(class="product-image__list")
+            for image in imageList 
+              img(src=`${image.img}` class=`product-image__secondary ${image.isActive ? `product-image__secondary--active` : ''}`)
+            +nextButton({"direction": "up"})
+            +prevButton({"direction": "down"})     
+          img(src="./assets/images/3.jpg" class="product-image__main") 
+        div(class="product-content") 
+          h2(class="heading-titary heading-decoration heading-decoration--arrow") RƯỢU NHO NĂM 1987
+          h5(class="product-price") 330.000
+          div(class="product-review") 
+            +rating({"grade": 3})
+            p(class="product-review__count") 1 Reviews
+            +button({"title": "Add your review","size": "xxl","type":"nonebg"}) 
+          +color-picker(colorList)
+          div(class="product-size")
+            h6 KÍCH CỠ
+            +dropdown({"targetId": "product-size_dropdown", "title": "Chọn kích cỡ", "list": sizeList})
+          div(class="product-addcart")
+            div(class="quantity")
+              div(class="num-in")
+                span(class="minus") -
+                input(type="text" class="num-in__input" value="1")
+                span(class="plus") +
+            +button({"title": "ADD TO CART", "size": "xxl"})
+          +product-action
+          div(class="product-description") 
+            h6 MÔ TẢ
+            p(class="product-description__text") Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit reiciendis quis enim placeat, veniam officia ut doloribus? Vitae totam pariatur nulla aliquam blanditiis quis, fugiat ullam! Consequuntur molestias aliquam voluptatibus.
+          div(class="product-social")
+            for logo in productSocialList 
+              img(src=`${logo.img}` class="product-social__logo")
+        div(class="product-about") 
+          div(class="product-about__more")
+            +tabs()
+          img(class="product-about__img" src="./assets/images/gal-2.jpg")
+
+  section(class="relate-product" id="pills-tab" role="tablist")
+    .container
+      h3(class="heading-titary heading-decoration heading-decoration--dash") SẢN PHẨM LIÊN QUAN
+      div(class="product-list")   
+        for product in newProductList 
+          +product(product)

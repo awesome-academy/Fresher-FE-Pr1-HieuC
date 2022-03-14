@@ -19,11 +19,25 @@
     }
   }
 
+  &--nonebg {
+    background-color: inherit;
+    padding: 0;
+  }
+
   &--lg {
     width: calc(#{$button-width} * 1.5);
   }
 
   &--xxl {
     width: calc(#{$button-width} * 2);
+  }
+
+  &--4xl {
+    width: calc(#{$button-width} * 4);
+  }
+
+  &--white {
+    background-color: inherit;
+    color: $color-black;
   }
 }

@@ -83,7 +83,6 @@
 
   &-hide {
     @include ab-translateMiddle($top: $image-height, $left: 50%);
-    @include flex($justify: space-evenly, $align: center);
     color: $color-white;
     padding: $s-2 0;
     width: 100%;
@@ -91,10 +90,6 @@
     opacity: 0;
     background-color: $color-black;
     transition: all 0.5s;
-
-    &__action {
-      @include flex($justify: space-between, $align: center, $gap: 0.5rem);
-    }
   }
 
   &-status {

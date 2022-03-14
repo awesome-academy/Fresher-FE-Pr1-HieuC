@@ -1,0 +1,27 @@
+.slide-button {
+  border: none;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background-color: inherit;
+  transition: all 0.2s;
+
+  i {
+    font-size: 2rem;
+    color: $color-grey-dark-2;
+
+    &:hover {
+      color: $color-secondary-light;
+    }
+  }
+
+  &--up {
+    @include ab-translateMiddle(5%, 50%);
+    position: absolute;
+  }
+
+  &--down {
+    @include ab-translateMiddle(95%, 50%);
+    position: absolute;
+  }
+}

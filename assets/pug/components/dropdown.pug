@@ -1,0 +1,7 @@
+mixin dropdown(props)
+  div(class=`dropdown`)
+    a(class="btn dropdown-toggle" href="#" role="button" id=`${props.targetId}` data-bs-toggle="dropdown" aria-expanded="false") #{props.title} 
+  ul(class="dropdown-menu" aria-labelledby=`${props.targetId}`)
+    for item in props.list 
+      li
+        a(class="dropdown-item" href="#") #{item.content}
