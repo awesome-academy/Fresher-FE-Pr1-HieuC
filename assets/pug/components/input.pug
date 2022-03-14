@@ -1,2 +1,7 @@
 mixin input(props)
   input(class=`input ${props.nonebg? `input--nonebg` : ""}` placeholder=`${props.placeholder}`)
+
+mixin formInput(props)
+  div(class="form-input")
+    label #{props.label}
+      input(type=`${props.type}` )  

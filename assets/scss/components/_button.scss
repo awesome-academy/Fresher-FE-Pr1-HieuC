@@ -5,6 +5,7 @@
   width: $button-width;
   color: $color-white;
   background-color: $color-black;
+  @include flex($justify: center, $align: center);
 
   &--arrow {
     &:after {
@@ -29,6 +30,7 @@
   }
 
   &--xxl {
+    height: calc(#{$button-height} * 1.2);
     width: calc(#{$button-width} * 2);
   }
 

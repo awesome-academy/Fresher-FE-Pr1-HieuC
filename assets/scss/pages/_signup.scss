@@ -1,0 +1,13 @@
+.signup {
+  width: 60%;
+  margin: 0 auto;
+
+  .signup-head {
+    @include flex($justify: space-between, $align: flex-start);
+  }
+
+  .signup-form {
+    border: 1px solid rgba($color-grey-dark-2, 0.3);
+    margin-top: 4rem;
+  }
+}
