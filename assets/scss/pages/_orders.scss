@@ -1,0 +1,44 @@
+.orders {
+  .orders-container {
+    @include grid($column: 4fr 1fr);
+    padding-top: 3rem;
+  }
+
+  .orders-infor {
+    width: 95%;
+    border: 1px solid rgba($color-grey-dark-2, 0.3);
+  }
+
+  .orders-overall {
+    padding: 2rem;
+
+    ul {
+      @include flex($justify: flex-start, $align: center);
+      flex-wrap: wrap;
+
+      li {
+        list-style: none;
+        padding: 0 1rem;
+
+        &:not(:last-child) {
+          border-right: 1px solid rgba($color-grey-dark-2, 0.3);
+        }
+      }
+    }
+  }
+
+  .orders-client {
+    @include flex($justify: flex-start, $direction: column, $align: flex-start, $gap: 1.5rem);
+    background-color: $color-grey-light-1;
+    padding: 1.5rem;
+    height: min-content;
+
+    .client-contact {
+      @include flex($justify: center, $align: center, $gap: 1.5rem);
+    }
+
+    .client-more {
+      text-decoration: underline;
+    }
+  }
+}
