@@ -1,0 +1,22 @@
+extends ../base/layout.pug
+
+block title 
+  title Login
+
+block content 
+  -const loginCrumb = [{"content": "Trang chủ", "href": "#"},{"content": "Đăng nhập", "href": "#"}]
+
+  section(class="login")
+    .container
+      +breadcrumb(loginCrumb)
+      div(class="login-head")
+        h4(class="heading-titary heading-decoration heading-decoration--arrow") ĐĂNG NHẬP
+        +button({"title": "ĐĂNG KÝ","size": "xxl","isLink": true,"href": "signup"})
+      form(class="form")
+        h6 KHÁCH HÀNG ĐĂNG NHẬP
+        p Nếu bạn có một tài khoản, vui lòng đăng nhập
+        +formInput({"label": "Email","type": "text" })
+        +formInput({"label": "Password","type": "password"})
+        a(class="forget-infor" href="#") Quên mật khẩu ?
+        div(class="form-button")
+          +button({"title": "ĐĂNG NHẬP","size": "lg","type": "submit"})  

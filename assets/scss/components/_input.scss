@@ -16,3 +16,17 @@
     }
   }
 }
+
+.form-input {
+  margin: 1.5rem 0;
+
+  label {
+    @include flex($justify: space-between, $align: center, $gap: 1rem);
+  }
+
+  input {
+    width: 90%;
+    height: 2rem;
+    border: 1px solid rgba($color-grey-dark-2, 0.3);
+  }
+}

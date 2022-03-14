@@ -1,0 +1,19 @@
+.form {
+  padding: 3rem 5%;
+  border: 1px solid rgba($color-grey-dark-2, 0.3);
+  margin-top: 2rem;
+
+  &-button {
+    @include flex($justify: center, $align: center, $gap: 2rem);
+    margin-top: 4rem;
+
+    &--rightside {
+      @include flex($justify: flex-end, $align: center);
+    }
+  }
+
+  .forget-infor {
+    margin-left: 10%;
+    color: $color-grey-dark-3;
+  }
+}

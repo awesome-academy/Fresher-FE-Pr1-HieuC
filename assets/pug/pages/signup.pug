@@ -1,0 +1,28 @@
+extends ../base/layout.pug
+
+block title 
+  title Signup
+
+block content
+  -const signupCrumb = [{"content": "Trang chủ", "href": "#"},{"content": "Đăng kí", "href": "#"}]
+
+
+  section(class="signup")
+    .container
+      +breadcrumb(signupCrumb)
+      div(class="signup-head")
+        h4(class="heading-titary heading-decoration heading-decoration--arrow") ĐĂNG KÍ
+        +button({"title": "ĐĂNG NHẬP","size": "xxl","isLink": true,"href": "signup"})
+      form(class="form")
+        h6(class="heading-titary") THÔNG TIN CÁ NHÂN
+        +formInput({"label": "Tên trước","type": "text" })
+        +formInput({"label": "Tên sau","type": "text"})
+        +formInput({"label": "Email","typ e": "email" })
+        +formInput({"label": "Password","type": "password"})
+        a(class="forget-infor" href="#") Đăng kí nhận bản tin
+        h6(class="heading-titary") THÔNG IN ĐĂNG NHẬP
+        +formInput({"label": "Mật khẩu","type": "password" })
+        +formInput({"label": "Xác nhận mật khẩu","type": "password"})
+        div(class="form-button form-button--rightside")
+          +button({"title": "Gửi","size": "lg","type": "submit"})
+          +button({"title": "Quay lại","size": "lg","isLink": true, "href": "login.html"}) 
