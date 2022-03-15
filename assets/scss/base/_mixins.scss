@@ -12,6 +12,7 @@
   display: flex;
   justify-content: $justify;
   align-items: $align;
+  flex-wrap: wrap;
   @if $direction != row {
     flex-direction: $direction;
   }

@@ -46,4 +46,9 @@
     background-color: inherit;
     color: $color-black;
   }
+
+  &--grey {
+    background-color: $color-grey-light-2;
+    color: $color-black;
+  }
 }

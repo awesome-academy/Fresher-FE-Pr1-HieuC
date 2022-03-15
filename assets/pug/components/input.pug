@@ -3,8 +3,13 @@ mixin input(props)
 
 mixin formInput(props)
   div(class="form-input")
-    label #{props.label}
-      input(type=`${props.type}` value=`${props.value ? props.value : ''}`)
+    if props.type == 'textarea'
+      label #{props.label}
+        textarea(rows="10")
+    else     
+      label #{props.label}
+        input(type=`${props.type}` value=`${props.value ? props.value : ''}`)
+
 mixin checkBox(props)
   div(class="input-checkbox")
     label #{props.label} 

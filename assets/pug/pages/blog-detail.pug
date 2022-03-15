@@ -1,0 +1,68 @@
+extends ../base/layout.pug
+
+block title 
+  title Blog Detail
+
+block content 
+  -const blogCrumb = [{"content": "Trang chủ", "href": "#"},{"content": "Blog", "href": "#"}]
+  -const tags = ["Đồng hồ", "Túi", "Phụ kiện", "Giày dép", "Sơ mi", "Nước hoa", "Son", "Rựou"]
+  -const newBlogs = [{"title": "CÁCH SẮP XẾP NỘI THẤT TRONG NHÀ", "date": "12/02/2021","img": "./assets/images/banner01.png"},{"title": "CÁCH UỐNG RƯỢU VANG", "date": "12/02/2021","img": "./assets/images/banner02.png"},{"title": "LÀM THẾ NÀO ĐỂ ĐẸP DA", "date": "12/02/2021","img": "./assets/images/banner03.png"}]
+  -const blogData = {"imgSrc": "./assets/images/gal-3.jpg","title": "VANG THĂNG LONG CLASSIC","author": "Giang Le", "date": "12/02/2021", "react": 1, "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel eos amet odit neque quis dolor repudiandae impedit quibusdam eligendi provident in, vitae modi sapiente? Soluta, blanditiis. Voluptas eveniet ab non adipisicing elit. Vel eos amet odit neque quis dolor repudiandae impedit quibusdam elVel eos amet odit neque quis dolor repudiandae ae modi sapiente? Soluta, blanditiis. Voluptas evenieVel eos amet odit neque quis dolor repudiandae g elit. Vel eos amet odit nequeVel eos amet odit neque quis dolor repudiandae  quibusdam eligendi provident in, vitae modi sapiente? Soluta, blanditiis. Voluptas eveniet ab non adipisicing elit. Vel eos amet odit neque quis dolor repudiandae impedit quibusdam eligendi provident in, vitae modi sapiente? Soluta, blanditiis. Voluptas eveniet ab non!", "comments": [{"author": "Quang Le", "time": 4,"text": "Tuyệt vời, khum còn gì để mà diên tả nữa gòi, gớt nước mắt"},{"author": "Thu Thuy", "time": 2,"text": "Tuyệt vời"},{"author": "Van Chien", "time": 3,"text": "Prefect"}]}
+
+  mixin blogComment(comment)
+    div(class="blog-comment")
+      div(class="blog-comment__header")
+        div(class="blog-comment__detail")
+          p Bình luận bởi:  #{comment.author}
+          p Cách đây #{comment.time} giờ
+        p(class="blog-comment__action") Trả lời
+      p(class="blog-comment__text")  #{comment.text}
+
+  mixin sideBlog(blog)   
+    div(class="side-blog")
+      img(src=`${blog.img}`)
+      div(class="side-blog__title")
+        p #{blog.title}
+        i(class="fa-solid fa-calendar")
+          span #{blog.date} 
+
+
+  section(class="blog-indetail")
+    .container
+      +breadcrumb(blogCrumb)
+      h4(class="heading-titary heading-decoration heading-decoration--arrow") BLOG
+      div(class="blog-container")
+        div(class="blog-sidebar")
+          div(class="blog-newest")
+            h5(class="heading-titary") BÀI VIẾT MỚI NHẤT
+            for blog in newBlogs  
+              +sideBlog(blog)
+          div(class="blog-tags") 
+            h5(class="heading-titary") BLOG TAGS
+            ul
+              for tag in tags 
+                li(class="tag") #{tag}
+          div(class="blog-video")  
+            h5(class="heading-titary") LASTEST VIDEO
+            img(src="./assets/images/hot-sale-banner.jpg")
+        div(class="blog-main")
+          img(src=`${blogData.imgSrc}`)
+          h3(class="heading-secondary") #{blogData.title}
+          div(class="blog-detail")
+            p #{blogData.author}
+            p #{blogData.date}
+            p #{blogData.react} Bình luận
+          p(class="blog-main__description") #{blogData.description}  
+          div(class="blog-main__form")
+            h6 ĐÓNG GÓP Ý KIẾN
+            +formInput({"label": "Tên","type": "text" })
+            +formInput({"label": "Email","type": "email"})
+            +formInput({"label": "Ý kiến","type": "textarea"})
+            div(class="form-button")
+              +button({"title": "GỬI Ý KIẾN","size": "lg","type": "submit"})
+          div(class="blog-comments")
+            h6 BÌNH LUẬN (3)
+            for comment in blogData.comments 
+              +blogComment(comment)
+            div(class="blog-comments__pagination")             
+              +pagination({"size": 3})
