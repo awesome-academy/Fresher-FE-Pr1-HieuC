@@ -1,0 +1,36 @@
+extends ../base/layout.pug
+
+block title 
+  title Orders
+
+block content 
+  -const ordersCrumb = [{"content": "Trang chủ", "href": "#"},{"content": "Đơn hàng", "href": "#"}]
+  -const orderOverAll = [{"status": "Tất cả", "count": 16},{"status": "Đã hủy", "count": 16},{"status": "Chưa duyệt", "count": 16},{"status": "Đã duyệt", "count": 16},{"status": "Đã thanh toán - Chờ mua hàng", "count": 16},{"status": "Đã mua hàng", "count": 16},{"status": "Hàng đã về - Chờ giao hàng", "count": 16},{"status": "Đã kết thúc", "count": 16}]
+  -const headerTabList = ["STT", "MÃ HÓA ĐƠN MUA HÀNG", "KHO NHẬN HÀNG", "SỐ SP", "TỔNG TIỀN", "TÌNH TRẠNG", "THAO TÁC"]
+  -const ordersData = [{"stt": "01", "details": {"code": "LEANHGIANG89","startDate": "17/06/2015","endDate": "01:23 14/02/2015"},"receiver": "HÀ ĐÔNG", "quantity": 7, "bill": 350000, "status": "Đã thanh toán", "thao tác": "Chi tiết"},{"stt": "02", "details": {"code": "LEANHGIANG89","startDate": "17/06/2015","endDate": "01:23 14/02/2015"},"receiver": "HÀ ĐÔNG", "quantity": 7, "bill": 350000, "status": "Đã thanh toán", "thao tác": "Chi tiết"},{"stt": "03", "details": {"code": "LEANHGIANG89","startDate": "17/06/2015","endDate": "01:23 14/02/2015"},"receiver": "HÀ ĐÔNG", "quantity": 7, "bill": 350000, "status": "Đã thanh toán", "thao tác": "Chi tiết"},{"stt": "04", "details": {"code": "LEANHGIANG89","startDate": "17/06/2015","endDate": "01:23 14/02/2015"},"receiver": "HÀ ĐÔNG", "quantity": 7, "bill": 350000, "status": "Đã thanh toán", "thao tác": "Chi tiết"},{"stt": "05", "details": {"code": "LEANHGIANG89","startDate": "17/06/2015","endDate": "01:23 14/02/2015"},"receiver": "HÀ ĐÔNG", "quantity": 7, "bill": 350000, "status": "Đã thanh toán", "thao tác": "Chi tiết"},{"stt": "06", "details": {"code": "LEANHGIANG89","startDate": "17/06/2015","endDate": "01:23 14/02/2015"},"receiver": "HÀ ĐÔNG", "quantity": 7, "bill": 350000, "status": "Đã thanh toán", "thao tác": "Chi tiết"} ]
+  -const contactInfor = [{"icon": "fa-user", "infor1": "Giang Lê", "infor2": "leanhgiang89@gmail.com"},{"icon": "fa-location-pin", "infor1": "Tòa nhà Hà Nội group, 42 Đội Cấn, Ba Đình, Hà Nội"},{"icon": "fa-phone", "infor1": "09864522145"}] 
+
+  section(class="orders")
+    .container
+      +breadcrumb(ordersCrumb)
+      h4(class="heading-titary heading-decoration heading-decoration--arrow") ĐƠN HÀNG
+      div(class="orders-container")
+        div(class="orders-infor")
+          div(class="orders-overall") 
+            h6 DANH SÁCH ĐƠN HÀNG
+            ul
+              li Trạng thái
+              for orderStatus in orderOverAll 
+                li #{orderStatus.status} 
+                  span (#{orderStatus.count})   
+          +table({"headers": headerTabList, "datas": ordersData})
+        div(class="orders-client") 
+          h6 THÔNG TIN KHÁCH HÀNG
+          for inf in contactInfor
+            div(class="client-contact")
+              i(class=`fa-solid ${inf.icon}`)
+              div(class="client-contact__details")
+                p #{inf.infor1}
+                if inf.infor2 
+                  p #{inf.infor2}
+          p(class="client-more") Chi tiết địa chỉ    

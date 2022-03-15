@@ -1,0 +1,19 @@
+.table {
+  width: 100%;
+  margin: 0;
+  border: 1px solid black;
+
+  th {
+    text-align: center;
+    border: 1px solid rgba($color-grey-dark-2, 0.3);
+  }
+
+  tr {
+    &:first-child {
+      background-color: rgba($color-grey-dark-2, 0.1);
+    }
+    &:not(:first-child) {
+      border-style: hidden;
+    }
+  }
+}
