@@ -1,0 +1,12 @@
+mixin pagination(props)
+  nav 
+    ul(class="pagination")
+      li(class="page-item")
+        a(class="page-link " href="#" aria-label="Previous")
+          i(class="fa-solid fa-angle-left")
+      each _,pageCount in Array(props.size) 
+        li(class="page-item")
+          a(class="page-link" href="#") #{pageCount + 1}
+      li(class="page-item page-item__btn")
+        a(class="page-link " href="#" aria-label="Previous")
+          i(class="fa-solid fa-angle-right") 
