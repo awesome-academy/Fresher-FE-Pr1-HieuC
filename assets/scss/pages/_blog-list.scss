@@ -1,0 +1,18 @@
+.blog-list {
+  .blogs-container {
+    @include grid($column: repeat(4, 1fr), $col-gap: 2rem, $row-gap: 1rem);
+    margin-top: 3rem;
+
+    @include respond-to(largedesktop-and-down) {
+      @include grid($column: repeat(3, 1fr), $col-gap: 1rem);
+    }
+
+    @include respond-to(desktop-and-down) {
+      @include grid($column: repeat(2, 1fr), $col-gap: 2rem);
+    }
+
+    @include respond-to(phone-and-down) {
+      @include grid($column: 1fr);
+    }
+  }
+}
