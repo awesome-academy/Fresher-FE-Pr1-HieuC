@@ -2,12 +2,5 @@ mixin table(props)
   table(class="table")
     tr  
       for header in props.headers
-        th #{header}        
-    for data in props.datas 
-      tr 
-        each value,key in data
-          if key == "details"
-            th #{value["code"]} - #{value["startDate"]} 
-              p #{value["endDate"]} 
-          else 
-            th #{value} 
+        th #{header}
+    block tableBody 

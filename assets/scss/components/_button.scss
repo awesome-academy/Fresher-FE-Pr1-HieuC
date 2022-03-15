@@ -7,6 +7,11 @@
   background-color: $color-black;
   @include flex($justify: center, $align: center);
 
+  &:hover {
+    background-color: $color-secondary-light;
+    color: $color-black;
+  }
+
   &--arrow {
     &:after {
       content: "";
@@ -30,11 +35,9 @@
 
   &--lg {
     width: calc(#{$button-width} * 1.5);
-    height: calc(#{$button-height} * 1.2);
   }
 
   &--xxl {
-    height: calc(#{$button-height} * 1.2);
     width: calc(#{$button-width} * 2);
   }
 

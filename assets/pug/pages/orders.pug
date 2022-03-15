@@ -23,7 +23,16 @@ block content
               for orderStatus in orderOverAll 
                 li #{orderStatus.status} 
                   span (#{orderStatus.count})   
-          +table({"headers": headerTabList, "datas": ordersData})
+          +table({"headers": headerTabList})
+            block tableBody
+              for data in ordersData 
+                tr 
+                  each value,key in data
+                    if key == "details"
+                      th #{value["code"]} - #{value["startDate"]} 
+                        p #{value["endDate"]}        
+                    else 
+                      th #{value}               
         div(class="orders-client") 
           h6 THÔNG TIN KHÁCH HÀNG
           for inf in contactInfor
