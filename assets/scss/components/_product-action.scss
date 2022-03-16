@@ -1,5 +1,6 @@
 .product-action {
   @include flex($justify: space-evenly, $align: center, $gap: 1rem);
+  max-width: 30rem;
 
   &__item {
     @include flex($justify: space-between, $align: center, $gap: 0.5rem);

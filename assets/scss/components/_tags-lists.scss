@@ -1,0 +1,21 @@
+.tags-list {
+  ul {
+    @include flex($justify: flex-start, $align: center, $gap: 1rem);
+    list-style: none;
+
+    a {
+      color: $color-black;
+    }
+  }
+
+  .tag {
+    padding: 0.5rem 0.8rem;
+    background-color: $color-grey-light-2;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-secondary-light;
+    }
+  }
+}

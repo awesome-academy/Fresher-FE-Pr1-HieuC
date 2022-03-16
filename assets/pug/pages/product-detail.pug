@@ -11,6 +11,8 @@ block content
   -const sizeList = [{"content": "To"},{"content": "Nhỏ"}]
   -const imageList = [{"img":"assets/images/1.jpg"},{"img":"assets/images/2.jpg"},{"img":"assets/images/3.jpg","isActive": true},{"img":"assets/images/4.jpg"},{"img":"assets/images/5.jpg"}]
   -const productSocialList = [{"img": "./assets/images/facebook-logo.png"},{"img": "./assets/images/twitter-logo.png"},{"img": "./assets/images/google-logo.png"}]
+  -const productDetailstabHeader = [{"text": "ĐẶC ĐIỂM NỔI BẬT","id": "tabhead1", "control": "tabContent1", "selected":"true", "isActive": true},{"text": "THÔNG TIN SẢN PHẨM","id": "tabhead2", "control": "tabContent2", "selected":"falses"},{"text": "ĐÁNH GIÁ","id": "tabhead3", "control": "tabContent3", "selected":"false"}]
+  -const tabContentProductDetails = [{"text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident illo corporis praesentium recusandae id, adipisci cum ab ipsum vel eaque ut ea a ullam culpa architecto unde quibusdam rerum? Enim!", "id": "tabContent1","controlBy": "tabhead1", "show": true,"isActive": true},{"text": "xyz", "id": "tabContent2","controlBy": "tabhead2"},{"text": "ádd", "id": "tabContent3","controlBy": "tabhead3"}]
 
   .container
     +breadcrumb(productDetailBreadcrum)
@@ -51,7 +53,12 @@ block content
               img(src=`${logo.img}` class="product-social__logo")
         div(class="product-about") 
           div(class="product-about__more")
-            +tabs()
+            +tabHeader({"tabHeader": productDetailstabHeader})
+            +tabContents
+              block tabContent
+                for tab in tabContentProductDetails 
+                  div(class=`tab-pane fade ${tab.show ? "show" : ""} ${tab.isActive ? "active" : ''}` id=`${tab.id}` rol="tabpanel" aria-labelledby=`${tab.controlBy}`) 
+                    p #{tab.text} 
           img(class="product-about__img" src="./assets/images/gal-2.jpg")
 
   section(class="relate-product" id="pills-tab" role="tablist")

@@ -1,0 +1,6 @@
+mixin tags-list(data)
+  nav(class="tags-list")
+    ul
+      for tag in data 
+        li(class="tag") 
+          a(href="#") #{tag}
