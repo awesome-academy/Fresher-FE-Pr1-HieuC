@@ -39,15 +39,17 @@ block content
               +sideBlog(blog)
           div(class="blog-tags") 
             h5(class="heading-titary") BLOG TAGS
-            ul
-              for tag in tags 
-                li(class="tag") #{tag}
+            nav
+              ul
+                for tag in tags 
+                  li(class="tag") 
+                    a(href="#") #{tag}
           div(class="blog-video")  
             h5(class="heading-titary") LASTEST VIDEO
             img(src="./assets/images/hot-sale-banner.jpg")
         div(class="blog-main")
           img(src=`${blogData.imgSrc}`)
-          h3(class="heading-secondary") #{blogData.title}
+          h5(class="heading-secondary") #{blogData.title}
           div(class="blog-detail")
             p #{blogData.author}
             p #{blogData.date}

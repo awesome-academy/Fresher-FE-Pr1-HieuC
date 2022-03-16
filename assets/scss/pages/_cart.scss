@@ -1,0 +1,11 @@
+.cart {
+  .cart-list {
+    border: 1px solid rgba($color-grey-dark-2, 0.3);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .cart-buttons {
+    @include flex($justify: flex-end, $align: center, $gap: 0.4rem);
+  }
+}
