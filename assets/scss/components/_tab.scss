@@ -1,7 +1,10 @@
 .nav-pills {
+  @include flex($justify: center, $align: center);
+
   .tab-link.active {
     background-color: $color-secondary-light;
   }
+
   .tab-link {
     color: $color-black;
     background-color: inherit;

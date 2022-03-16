@@ -39,11 +39,7 @@ block content
               +sideBlog(blog)
           div(class="blog-tags") 
             h5(class="heading-titary") BLOG TAGS
-            nav
-              ul
-                for tag in tags 
-                  li(class="tag") 
-                    a(href="#") #{tag}
+            +tags-list(tags)
           div(class="blog-video")  
             h5(class="heading-titary") LASTEST VIDEO
             img(src="./assets/images/hot-sale-banner.jpg")

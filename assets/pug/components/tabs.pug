@@ -1,12 +1,12 @@
--const tabHeader = [{"text": "ĐẶC ĐIỂM NỔI BẬT","id": "tabhead1", "control": "tabContent1", "selected":"true", "isActive": true},{"text": "THÔNG TIN SẢN PHẨM","id": "tabhead2", "control": "tabContent2", "selected":"falses"},{"text": "ĐÁNH GIÁ","id": "tabhead3", "control": "tabContent3", "selected":"false"}]
--const tabContent = [{"text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident illo corporis praesentium recusandae id, adipisci cum ab ipsum vel eaque ut ea a ullam culpa architecto unde quibusdam rerum? Enim!", "id": "tabContent1","controlBy": "tabhead1", "show": true,"isActive": true},{"text": "xyz", "id": "tabContent2","controlBy": "tabhead2"},{"text": "ádd", "id": "tabContent3","controlBy": "tabhead3"}]
-
-mixin tabs(id)
-  ul(class="nav nav-pills mb-3" id="pills-tab" role="tablist")
-    for tab in tabHeader 
+mixin tabHeader(props)
+  ul(class="nav nav-pills" id="pills-tab" role="tablist")
+    for tab in props.tabHeader 
       li(class="nav-item" role="presentation")
-        button(class=`tab-link ${tab.isActive ? 'active' : ''}` id=`${tab.id}` data-bs-toggle="pill" data-bs-target=`#${tab.control}` type="button" role="tab" aria-controls=`${tab.control}}` aria-selected=`${tab.selected}`) #{tab.text}
+        button(class=`tab-link ${tab.isActive ? 'active' : ''}` id=`${tab.id}` data-bs-toggle="pill" data-bs-target=`#${tab.control}` type="button" role="tab" aria-controls=`${tab.control}}` aria-selected=`${tab.selected}`) 
+          if tab.icon 
+            i(class=`fa-solid ${tab.icon}`)
+          else  
+            p #{tab.text}
+mixin tabContents        
   div(class="tab-content" id="pills-tabContent")
-    for tab in tabContent 
-      div(class=`tab-pane fade ${tab.show ? "show" : ""} ${tab.isActive ? "active" : ''}` id=`${tab.id}` rol="tabpanel" aria-labelledby=`${tab.controlBy}`) #{tab.text} 
-
+    block tabContent

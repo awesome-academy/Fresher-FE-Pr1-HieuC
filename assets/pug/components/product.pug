@@ -9,3 +9,13 @@ mixin product(props)
     p(class="product-status") #{props.state ? props.state : null}
     div(class="product-hide")
       +product-action
+
+mixin product-line(props) 
+  div(class="product-line")
+    img(src=`${props.img}` class="product-line__img")
+    div(class="product-line__details") 
+      h4(class="heading-titary") #{props.title}
+      p(class="product-line__price") #{props.discountPrice}
+      p(class="product-line__description") #{props.description}
+      +product-action
+      +button({"title": "ADD TO CART", "size": "xxl"})
