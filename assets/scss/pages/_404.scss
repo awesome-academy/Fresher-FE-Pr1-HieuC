@@ -1,0 +1,95 @@
+.notfound {
+  @include flex($justify: center, $direction: column, $align: center);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  &-hero {
+    position: relative;
+    width: 100%;
+    height: 35rem;
+    background-color: $color-secondary-light;
+
+    &::after {
+      @include ab-translateMiddle(50%, 60%);
+      content: "404";
+      font-size: 25rem;
+      color: $color-white;
+      height: 100%;
+      z-index: $z-low;
+    }
+
+    &::before {
+      @include ab-translateMiddle(50%, 10%);
+      content: "";
+      color: $color-white;
+      background-image: url("../images/404-1.jpg");
+      background-position: center;
+      height: 200%;
+      width: 50rem;
+      z-index: $z-important;
+
+      @include respond-to(desktop-and-down) {
+        display: none;
+      }
+    }
+  }
+
+  &-box {
+    @include ab-translateMiddle(50%, 60%);
+    @include flex($justify: center, $align: center);
+    width: 100%;
+    z-index: $z-normal;
+    background-color: inherit;
+  }
+
+  &-title {
+    @include ab-translateMiddle(40%, 35%);
+    font-size: 15rem;
+    z-index: $z-important;
+    font-style: italic;
+
+    @include respond-to(desktop-and-down) {
+      @include ab-translateMiddle(40%, 30%);
+    }
+
+    @include respond-to(tablet-and-down) {
+      @include ab-translateMiddle(40%, 20%);
+    }
+  }
+
+  &-content {
+    h5 {
+      font-size: 2.5rem;
+      font-weight: lighter;
+    }
+
+    h6 {
+      font-style: italic;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  }
+
+  &-action {
+    @include flex($justify: center, $align: center, $gap: 2rem);
+  }
+
+  img {
+    width: 20rem;
+  }
+
+  &-link {
+    color: $color-black;
+    margin: 0 1rem;
+    font-size: 1.5rem;
+
+    &:hover {
+      color: $color-secondary-light;
+    }
+
+    i {
+      margin: 0 0.5rem;
+    }
+  }
+}

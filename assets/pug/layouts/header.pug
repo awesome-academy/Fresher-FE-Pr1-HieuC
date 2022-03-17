@@ -3,19 +3,23 @@
 
 
 mixin list-item(className,props)
-  div(class=`${className}-item dropdown`) 
-    li(class=`${className}-link ${props.isActive ? `${className}-link--active` : ''}` type="button" id=`${props.id}` data-bs-toggle="dropdown" aria-expanded="false" ) #{props.title.toUpperCase()}
-    div(class="dropdown-menu" aria-labelledby=`${props.id}`)
-      div(class="mega-container") 
-        if props.mega
-          each value,key in props.mega
-            div(class="mega-column") 
-              h5(class="heading-titary") #{key.toUpperCase()}
-              ul
-                for item in value 
-                  li
-                    a(href="#") #{item}
-          img(src="./assets/images/hot-sale-banner.jpg")    
+  if className == "menu"
+    div(class=`${className}-item dropdown`) 
+      h4(class=`${className}-link ${props.isActive ? `${className}-link--active` : ''}` type="button" id=`${props.id}` data-bs-toggle="dropdown" aria-expanded="false" ) #{props.title.toUpperCase()}
+      div(class="dropdown-menu" aria-labelledby=`${props.id}`)
+        div(class="mega-container") 
+          if props.mega
+            each value,key in props.mega
+              div(class="mega-column") 
+                h5(class="heading-titary") #{key.toUpperCase()}
+                ul
+                  for item in value 
+                    li
+                      a(href="#") #{item}
+            img(src="./assets/images/hot-sale-banner.jpg")
+  else if className = "nav"
+    li(class=`${className}-item`) 
+      a(class=`${className}-link ${props.isActive ? `${className}-link--active` : ''}` href=`${props.href}`) #{props.title}             
 
 mixin header
   header

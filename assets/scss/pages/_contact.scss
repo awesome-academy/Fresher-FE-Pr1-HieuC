@@ -1,0 +1,36 @@
+.contact {
+  .contact-container {
+    @include grid($column: 3fr 2fr, $col-gap: 2rem);
+    padding-top: 2rem;
+
+    @include respond-to(desktop-and-down) {
+      @include grid($column: 3fr 1fr, $col-gap: 1rem);
+    }
+
+    .contact-main {
+      img {
+        width: 100%;
+      }
+    }
+
+    .contact-details {
+      @include flex($justify: flex-start, $direction: column, $align: flex-start, $gap: 1.5rem);
+      img {
+        width: 50%;
+      }
+
+      &__item {
+        @include flex($justify: flex-start, $align: center, $gap: 1rem);
+      }
+
+      &__social-list {
+        @include flex($justify: flex-start, $align: center, $gap: 1rem);
+        list-style: none;
+
+        i {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

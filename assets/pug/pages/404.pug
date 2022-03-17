@@ -1,0 +1,21 @@
+extends ../base/404-layout.pug
+
+block title 
+  title 404
+
+block content 
+  section(class="notfound")
+    div(class="notfound-hero") 
+      h4(class="notfound-title") Lỗi 
+      div(class="notfound-box")    
+        div(class="notfound-content")
+          h5 Đây không phải là
+          h6 Trang web bạn đang tìm kiếm
+    div(class="notfound-action") 
+      img(src="./assets/images/logo-white.jpg")
+      nav(class="notfound-nav")
+        a(href="#" class="notfound-link") Trang chủ
+          i(class="fa-solid fa-caret-right")
+        a(href="#" class="notfound-link") Liên hệ
+          i(class="fa-solid fa-caret-right")
+      +input({"placeholder": "Search for something"})  
