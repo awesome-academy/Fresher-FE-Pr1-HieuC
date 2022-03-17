@@ -29,6 +29,7 @@
     &__main {
       object-fit: cover;
       width: 100%;
+      margin: auto;
     }
   }
 
@@ -119,5 +120,10 @@
   .product-list {
     @include flex($justify: space-evenly, $align: center, $gap: 2rem);
     margin-top: 2rem;
+    overflow-x: scroll;
+
+    @include respond-to(tablet-and-down) {
+      gap: 0.1rem;
+    }
   }
 }

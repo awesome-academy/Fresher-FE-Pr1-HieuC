@@ -13,6 +13,11 @@
   }
 
   &--arrow {
+    &:hover {
+      &::after {
+        border-left: calc(#{$button-width} / 2) solid $color-secondary-light;
+      }
+    }
     &:after {
       content: "";
       position: absolute;
@@ -22,6 +27,10 @@
       border-top: calc(#{$button-width} / 4) solid transparent;
       border-left: calc(#{$button-width} / 2) solid $color-black;
       border-bottom: calc(#{$button-width} / 4) solid transparent;
+
+      @include respond-to(desktop-and-down) {
+        display: none;
+      }
     }
   }
 

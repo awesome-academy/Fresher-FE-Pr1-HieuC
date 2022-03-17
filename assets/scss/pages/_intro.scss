@@ -1,0 +1,14 @@
+.introduction {
+  .introduction-container {
+    @include grid($column: 1fr 1fr, $col-gap: 2rem);
+    padding-top: 2rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &-title {
+    font-size: 2rem;
+  }
+}

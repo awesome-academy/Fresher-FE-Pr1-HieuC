@@ -1,0 +1,9 @@
+mixin carousel(props)
+  div(id=`${props.id}` class="carousel slide" data-ride="carousel")
+    ol(class="carousel-indicators")
+      li(data-bs-target=`#${props.id}` data-bs-slide-to="0"  )
+      li(data-bs-target=`#${props.id}` data-bs-slide-to="1" class="active"  )
+      li(data-bs-target=`#${props.id}` data-bs-slide-to="2" )
+    div(class="carousel-inner")
+      block carousel-inner
+    block carousel-control

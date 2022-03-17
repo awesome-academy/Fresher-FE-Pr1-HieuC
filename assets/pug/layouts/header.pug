@@ -1,37 +1,56 @@
-- const navList = [{"title": "Tài khoản của tôi","id": "menu-1", "isActive": false},{"title": "Trạng thái đơn hàng","id": "menu-2", "isActive": true},{"title": "Danh sách đăng kí","id": "menu-3", "isActive": false},{"title": "Giỏ hàng","id": "menu-4", "isActive": false},{"title": "Đăng nhập","id": "menu-5", "isActive": false},{"title": "Đăng kí","id": "menu-6", "isActive": false}]
-- const menuList = [{"title": "Trang chủ", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false},{"title": "Rượu vang đỏ", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} ,"isActive": true},{"title": "Rượu trắng", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false},{"title": "Champagne", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false},{"title": "Thông tin", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false},{"title": "Blog", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false},{"title": "Liên hệ", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false}]
+- const navList = [{"title": "Tài khoản của tôi","id": "menu-1","href": "contact.html", "isActive": false},{"title": "Trạng thái đơn hàng","id": "menu-2","href": "orders.html", "isActive": true},{"title": "Danh sách đăng kí","id": "menu-3","href": "address.html", "isActive": false},{"title": "Giỏ hàng","id": "menu-4","href": "cart.html", "isActive": false},{"title": "Đăng nhập","id": "menu-5","href": "login.html", "isActive": false},{"title": "Đăng kí","id": "menu-6","href": "signup.html", "isActive": false}]
+- const menuList = [{"title": "Trang chủ", "href": "index.html" , "isActive": false},{"title": "Rượu vang đỏ", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} ,"isActive": true},{"title": "Rượu trắng", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false},{"title": "Champagne", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false},{"title": "Thông tin", "href": "contact.html", "isActive": false},{"title": "Blog", "href": "blog-list.html", "isActive": false},{"title": "Liên hệ", "href": "contact.html", "isActive": false}]
 
 
 mixin list-item(className,props)
   if className == "menu"
-    div(class=`${className}-item dropdown`) 
-      h4(class=`${className}-link ${props.isActive ? `${className}-link--active` : ''}` type="button" id=`${props.id}` data-bs-toggle="dropdown" aria-expanded="false" ) #{props.title.toUpperCase()}
-      div(class="dropdown-menu" aria-labelledby=`${props.id}`)
-        div(class="mega-container") 
-          if props.mega
-            each value,key in props.mega
-              div(class="mega-column") 
-                h5(class="heading-titary") #{key.toUpperCase()}
-                ul
-                  for item in value 
-                    li
-                      a(href="#") #{item}
-            img(src="./assets/images/hot-sale-banner.jpg")
+    li(class=`${className}-item dropdown`) 
+      if (props.mega)
+        a(class=`${className}-link ${props.isActive ? `${className}-link--active` : ''}` id=`${props.id}` data-bs-toggle="dropdown" aria-expanded="false" href=`${props.href}` ) #{props.title.toUpperCase()}
+        div(class="dropdown-menu" aria-labelledby=`${props.id}`)
+          div(class="mega-container") 
+            if props.mega
+              each value,key in props.mega
+                div(class="mega-column") 
+                  h5(class="heading-titary") #{key.toUpperCase()}
+                  ul
+                    for item in value 
+                      li
+                        a(href="product-list.html") #{item}
+              img(src="./assets/images/hot-sale-banner.jpg")
+      else 
+        a(class=`${className}-link ${props.isActive ? `${className}-link--active` : ''}` aria-expanded="false" href=`${props.href}` ) #{props.title.toUpperCase()}       
   else if className = "nav"
     li(class=`${className}-item`) 
       a(class=`${className}-link ${props.isActive ? `${className}-link--active` : ''}` href=`${props.href}`) #{props.title}             
 
 mixin header
   header
+    i(class="icon fa-solid fa-bars bars-control" type='button' data-bs-toggle='modal' data-bs-target='#sidebar') 
     nav(class="nav")
       ul(class="nav-list")
         for item in navList 
           +list-item("nav",item)
       div(class="nav-search")
         +input({'placeholder': 'Tìm kiếm ở đây',"nonebg": true})
-        <i class="icon fa-solid fa-magnifying-glass"></i>
+        i(class="icon fa-solid fa-magnifying-glass")
     img(class="hero" src="./assets/images/hero.jpg")
-    div(class="menu")
+    nav(class="menu")
       img(class="menu__img" src="./assets/images/logo-menu.jpg")
       for item in menuList 
         +list-item("menu",item)
+    div(class="header-box") 
+      div(class="header-box__container")
+        h1(class="header-title") Rượu
+    +modal({"id": "sidebar","fullScreen": true})
+      div(class="sidebar-container")
+        .modal-header
+          i(class="fa-solid fa-close " type='button' data-bs-dismiss='modal' aria-label='Close')
+        h5(class="heading-titary") NAVIGATION 
+        ul(class="sidebar-nav")
+          for item in navList 
+            +list-item("nav",item)
+        h5(class="heading-titary") MENU
+        div(class="sidebar-menu") 
+          for item in menuList 
+            +list-item("menu",item)

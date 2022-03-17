@@ -24,6 +24,18 @@ block content
     div(class="intro-content")
       h2(class="heading-secondary heading-decoration heading-decoration--dash") GIỚI THIỆU
       p(class="intro-text") Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      div(class="intro-button")
+        +button({"title": "XEM THÊM","size": "xxl", "toggle": "modal", "target": "index-popup"})
+    +modal({"id": "index-popup","dialogCenter": true}) 
+      div(class="index-popup__container")
+        img(src="./assets/images/1.jpg")
+        div(class="index-popup__content") 
+          h4(class="heading-titary") Gửi Email 
+          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quam minus eveniet veniam voluptate deserunt amet rerum praesentium exercitationem tempore consequuntur, expedita repellat corporis ipsam accusamus pariatur nesciunt magni temporibus.
+          form(class="index-popup__form")
+            +input({"placeholder": "Email của bạn"})
+            +button({"title": "GỬI EMAIL", "size": "xxl", "type": "submit"})
+          +checkBox({"label": "Không hiển thị thông báo này"})
   section(class="hot")
     .container 
       div(class="hot-contain")
@@ -47,15 +59,25 @@ block content
       div(class="product-list")   
         for product in newProductList 
           +product(product)
-  section(class="gallery")
-    for image in galleryImgs 
-      img(class="gallery-img" src=`${image.source}`) 
+      +nextButton({"direction": "right"})
+      +prevButton({"direction": "left"})  
+  section(class="section gallery")
+    for image in galleryImgs
+      div(class="gallery-item") 
+        img(class="gallery-img" src=`${image.source}`)
+        div(class="gallery-item__box")
+          div(class="gallery-item__box-content") 
+            h5 Rượu
+          each n,i in Array(8)
+            div(class=`gallery-item__empty-box-${i+1}`)
   section(class="top-product")
     .container
       h3(class="heading-titary heading-decoration heading-decoration--dash") SẢN PHẨM BÁN CHẠY
       div(class="product-list")   
         for product in newProductList 
-          +product(product)    
+          +product(product)
+      +nextButton({"direction": "right"})
+      +prevButton({"direction": "left"})          
   section(class="others")
     .container
       div(class="hightlight-blog")
@@ -63,13 +85,11 @@ block content
         div(class="top-blog")
           for item in blogList 
             +blog(item)
-
       div(class="feedback")
         h3(class="heading-titary heading-decoration heading-decoration--dash") KHÁCH HÀNG
         div(class="feedback-logo")
           i(class="fa-solid fa-quote-right")
-        div(id="carousel1" class="carousel slide" data-bs-ride="carousel")
-          +carousel-indicator("carousel1")
-          div(class="carousel-inner")
+        +carousel({"id": "carousel1"})  
+          block carousel-inner 
             for feedback in feedbacks 
               +feedback-item(feedback)

@@ -24,13 +24,14 @@ block content
               +button({"title": "GỬI","size": "lg","type": "submit"})
         div(class="contact-details") 
           img(src="./assets/images/logo-white.jpg")
-          for item in contactDetails        
-            div(class="contact-details__item")                  
-              i(class=`${item.icon}`)
-              p #{item.detail}
-          div(class="contact-details__social")
-            h5 FOLLOW US: 
-            ul(class="contact-details__social-list") 
-              for social in  contactSocials
-                li 
-                  i(class=`fa-brands ${social}`)
+          div
+            for item in contactDetails        
+              div(class="contact-details__item")                  
+                i(class=`${item.icon}`)
+                p #{item.detail}
+            div(class="contact-details__social")
+              h5 FOLLOW US: 
+              ul(class="contact-details__social-list") 
+                for social in  contactSocials
+                  li 
+                    i(class=`fa-brands ${social}`)

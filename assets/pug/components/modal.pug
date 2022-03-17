@@ -1,0 +1,5 @@
+mixin modal(props)
+  div(class=`modal ${props.fullScreen ? 'modal--full' : ''} fade` id=`${props.id}` tabindex="-1" aria-hidden="true")  
+    div(class=`modal-dialog ${props.dialogCenter ? 'modal-dialog-centered' : ''} ${props.fullScreen ? 'modal-fullscreen' : ''}`)
+      div(class="modal-content")    
+        block 

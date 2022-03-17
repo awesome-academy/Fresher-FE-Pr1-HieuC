@@ -1,9 +1,46 @@
 .intro {
   position: relative;
 
+  @include respond-to(tablet-and-down) {
+    min-height: 25rem;
+  }
+
+  img {
+    width: 40%;
+
+    @include respond-to(tablet-and-down) {
+      opacity: 0.6;
+    }
+  }
+
   &-content {
-    text-align: center;
     @include ab-translateMiddle(50%, 50%);
+    text-align: center;
+
+    @include respond-to(phone-and-down) {
+      width: 80%;
+    }
+  }
+
+  &-button {
+    @include flex($justify: center, $align: center);
+    margin-top: 1rem;
+  }
+
+  .index-popup__container {
+    @include grid(1fr 2fr);
+
+    .heading-container {
+      font-size: 3rem;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .index-popup__form {
+    @include flex($justify: flex-start, $align: center);
   }
 }
 
@@ -11,6 +48,10 @@
   padding-top: 2rem;
   position: relative;
   padding-bottom: calc(#{$contain-height / 2});
+
+  @include respond-to(tablet-and-down) {
+    padding-bottom: calc(#{$contain-height / 4});
+  }
 
   &-contain {
     position: relative;
@@ -23,12 +64,31 @@
       height: $contain-height;
       padding: 5rem;
       display: flex;
-      width: 50%;
+      width: 70%;
+
+      @include respond-to(tablet-and-down) {
+        top: 80%;
+        width: 90%;
+        padding: 1rem;
+      }
+
+      &-img {
+        @include respond-to(phone-and-down) {
+          @include ab-translateMiddle(50%, 50%);
+          height: 40rem;
+          opacity: 0.5;
+          z-index: -1;
+        }
+      }
 
       &-content {
         @include flex($justify: flex-start, $direction: column, $align: start, $gap: 2rem);
         width: 50%;
         margin-left: auto;
+
+        @include respond-to(phone-and-down) {
+          width: 100%;
+        }
       }
 
       &-price {
@@ -39,11 +99,15 @@
 
       &-count {
         @include grid($column: repeat(2, 1fr));
+        width: 100%;
+
+        @include respond-to(phone-and-down) {
+          column-gap: 10rem;
+        }
 
         &__ele {
           @include flex($justify: center, $align: center, $direction: column);
-          min-width: 12rem;
-          min-height: 9rem;
+          width: 100%;
           border: 1px solid $color-secondary-light;
           font-size: 2rem;
           color: $color-secondary-light;
@@ -63,9 +127,14 @@
   padding: 5rem 0;
   text-align: center;
 
+  .container {
+    position: relative;
+  }
+
   .product-list {
-    @include flex($justify: space-evenly, $align: center, $gap: 2rem);
+    @include grid($column: repeat(4, 1fr));
     margin-top: 2rem;
+    overflow: scroll;
   }
 }
 
@@ -73,10 +142,75 @@
   @include grid($column: repeat(4, 1fr));
   margin: 2rem 0;
 
-  &-img {
-    object-fit: cover;
+  @include respond-to(tablet-and-down) {
+    @include grid($column: repeat(2, 1fr));
+    grid-template-rows: auto auto;
+    grid-auto-rows: 0px;
+    overflow: hidden;
+  }
+
+  &-item {
     height: 25rem;
     width: 100%;
+    position: relative;
+
+    &:hover {
+      .gallery-item__box {
+        opacity: 1;
+      }
+    }
+
+    &__box {
+      @include ab-translateMiddle(50%, 50%);
+      height: 40%;
+      width: 50%;
+      display: grid;
+      grid-template-columns: 1fr 8fr 1fr;
+      grid-template-rows: 1fr 6fr 1fr;
+      background-color: inherit;
+      opacity: 0;
+      transition: all 0.3s;
+    }
+    &__box-content {
+      @include flex($justify: center, $align: center);
+      height: 100%;
+      width: 100%;
+      grid-row: 2/3;
+      grid-column: 2/3;
+      border: 1px solid $color-grey-light-1;
+
+      h5 {
+        color: $color-grey-light-1;
+        font-size: 3rem;
+        text-align: center;
+      }
+    }
+
+    &__empty-box-1,
+    &__empty-box-3 {
+      border-bottom: 1px solid $color-grey-light-1;
+    }
+
+    &__empty-box-6,
+    &__empty-box-8 {
+      border-top: 1px solid $color-grey-light-1;
+    }
+
+    &__empty-box-1,
+    &__empty-box-6 {
+      border-right: 1px solid $color-grey-light-1;
+    }
+
+    &__empty-box-3,
+    &__empty-box-8 {
+      border-left: 1px solid $color-grey-light-1;
+    }
+  }
+
+  &-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
     cursor: pointer;
     transition: all 0.2s;
 
@@ -90,9 +224,14 @@
   padding: 5rem 0;
   text-align: center;
 
+  .container {
+    position: relative;
+  }
+
   .product-list {
-    @include flex($justify: space-evenly, $align: center, $gap: 2rem);
+    @include grid($column: repeat(4, 1fr));
     margin-top: 2rem;
+    overflow: scroll;
   }
 }
 
@@ -101,6 +240,10 @@
 
   .container {
     @include grid($column: 2fr 1fr);
+
+    @include respond-to(phone-and-down) {
+      @include grid($column: 1fr);
+    }
   }
 
   .top-blog {
