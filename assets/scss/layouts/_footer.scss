@@ -5,10 +5,14 @@ footer {
     @include flex($justify: center, $align: center);
 
     .logo-item {
-      height: 200px;
-      max-width: 350px;
+      height: 20rem;
+      max-width: 35rem;
       border-bottom: 1px solid rgba($color-grey-dark, 0.2);
       object-fit: cover;
+
+      @include respond-to(tablet-and-down) {
+        height: 14rem;
+      }
 
       &--sideborder {
         border-left: 1px solid rgba($color-grey-dark, 0.2);
@@ -43,7 +47,7 @@ footer {
     @include grid($column: repeat(2, 1fr), $row-gap: 1rem);
 
     &__address {
-      @include flex($justify: flex-start, $align: center, $gap: 1rem);
+      @include flex($justify: flex-start, $align: center, $gap: 1rem, $wrap: nowrap);
       grid-column: 1 /-1;
     }
 

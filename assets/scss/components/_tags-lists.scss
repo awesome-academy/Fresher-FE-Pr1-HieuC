@@ -1,6 +1,6 @@
 .tags-list {
   ul {
-    @include flex($justify: flex-start, $align: center, $gap: 1rem);
+    @include flex($justify: flex-start, $align: center, $gap: 1rem, $wrap: wrap);
     list-style: none;
 
     a {

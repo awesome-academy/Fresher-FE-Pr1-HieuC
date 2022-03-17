@@ -1,0 +1,36 @@
+extends ../base/layout.pug
+
+block title 
+  title Contact
+
+block content 
+  -const contactCrumb = [{"content": "Trang chủ", "href": "#"},{"content": "Địa chỉ", "href": "#"}]
+  -const contactDetails =[{"icon": "fa-solid fa-location-dot","detail":"Tầng 4, tòa nhà Hanoi Group, số 442 Đội Cấn, P Cống Vị, Q Ba Đình, Hà Nội"},{"icon": "fa-solid fa-phone","detail":"(04) 0984444334"},{"icon": "fa-solid fa-inbox","detail":"winhourse@gmail.com"}]
+  -const contactSocials = ["fa-facebook","fa-google-plus-g","fa-twitter"]
+
+  section(class="contact")
+    .container
+      +breadcrumb(contactCrumb)
+      h4(class="heading-titary heading-decoration heading-decoration--arrow") LIÊN HỆ
+      div(class="contact-container")
+        div(class="contact-main")
+          img(src="./assets/images/contact-map.jpg")
+          form(class="contact-main__form")
+            +formInput({"label": "Your name","type": "text" })
+            +formInput({"label": "Email","type": "email"})
+            +formInput({"label": "Subject","type": "text"})
+            +formInput({"label": "Ý kiến","type": "textarea"})
+            div(class="form-button")
+              +button({"title": "GỬI","size": "lg","type": "submit"})
+        div(class="contact-details") 
+          img(src="./assets/images/logo-white.jpg")
+          for item in contactDetails        
+            div(class="contact-details__item")                  
+              i(class=`${item.icon}`)
+              p #{item.detail}
+          div(class="contact-details__social")
+            h5 FOLLOW US: 
+            ul(class="contact-details__social-list") 
+              for social in  contactSocials
+                li 
+                  i(class=`fa-brands ${social}`)
