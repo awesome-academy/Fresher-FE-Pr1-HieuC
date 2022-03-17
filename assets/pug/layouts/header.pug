@@ -1,10 +1,21 @@
-- const navList = [{"title": "Tài khoản của tôi", "href": "#", "isActive": false},{"title": "Trạng thái đơn hàng", "href": "#", "isActive": true},{"title": "Danh sách đăng kí", "href": "#", "isActive": false},{"title": "Giỏ hàng", "href": "#", "isActive": false},{"title": "Đăng nhập", "href": "#", "isActive": false},{"title": "Đăng kí", "href": "#", "isActive": false}]
-- const menuList = [{"title": "Trang chủ", "href": "#", "isActive": false},{"title": "Rượu vang đỏ", "href": "#", "isActive": true},{"title": "Rượu trắng", "href": "#", "isActive": false},{"title": "Champagne", "href": "#", "isActive": false},{"title": "Thông tin", "href": "#", "isActive": false},{"title": "Blog", "href": "#", "isActive": false},{"title": "Liên hệ", "href": "#", "isActive": false}]
+- const navList = [{"title": "Tài khoản của tôi","id": "menu-1", "isActive": false},{"title": "Trạng thái đơn hàng","id": "menu-2", "isActive": true},{"title": "Danh sách đăng kí","id": "menu-3", "isActive": false},{"title": "Giỏ hàng","id": "menu-4", "isActive": false},{"title": "Đăng nhập","id": "menu-5", "isActive": false},{"title": "Đăng kí","id": "menu-6", "isActive": false}]
+- const menuList = [{"title": "Trang chủ", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false},{"title": "Rượu vang đỏ", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} ,"isActive": true},{"title": "Rượu trắng", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false},{"title": "Champagne", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false},{"title": "Thông tin", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false},{"title": "Blog", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false},{"title": "Liên hệ", "href": "#","mega":{"Rượu ngoại": ["Rượu Chivas", "Johnie Walker"],"Rượu vang": ["Whisky", "Martin"], "Rượu Nội": ["Vang đà lạt", "Vang thăng long"]} , "isActive": false}]
 
 
 mixin list-item(className,props)
-  li(class=`${className}-item`) 
-    a(class=`${className}-link ${props.isActive ? `${className}-link--active` : ''}` href=`${props.href}`) #{props.title} 
+  div(class=`${className}-item dropdown`) 
+    li(class=`${className}-link ${props.isActive ? `${className}-link--active` : ''}` type="button" id=`${props.id}` data-bs-toggle="dropdown" aria-expanded="false" ) #{props.title.toUpperCase()}
+    div(class="dropdown-menu" aria-labelledby=`${props.id}`)
+      div(class="mega-container") 
+        if props.mega
+          each value,key in props.mega
+            div(class="mega-column") 
+              h5(class="heading-titary") #{key.toUpperCase()}
+              ul
+                for item in value 
+                  li
+                    a(href="#") #{item}
+          img(src="./assets/images/hot-sale-banner.jpg")    
 
 mixin header
   header

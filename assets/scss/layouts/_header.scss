@@ -34,6 +34,10 @@ header {
       color: $color-grey-light-1;
       text-decoration: none;
 
+      &:hover {
+        color: $color-secondary-light;
+      }
+
       &--active {
         color: $color-secondary-light;
         text-decoration: underline;
@@ -79,8 +83,35 @@ header {
       font-size: 1.4rem;
       color: $color-grey-light-1;
 
+      &:hover {
+        color: $color-secondary-light;
+      }
+
       &--active {
         color: $color-secondary-light;
+      }
+    }
+
+    .dropdown-menu {
+      border: 1px solid $color-secondary-light;
+      min-width: 80rem;
+
+      .mega-container {
+        @include flex($justify: space-around, $align: flex-start);
+
+        img {
+          width: 25%;
+        }
+
+        .mega-column {
+          ul {
+            list-style: none;
+          }
+
+          a {
+            color: $color-black;
+          }
+        }
       }
     }
   }
