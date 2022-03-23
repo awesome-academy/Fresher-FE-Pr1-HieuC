@@ -16,7 +16,7 @@
       width: 0;
       height: 0;
       border-top: 0px solid transparent;
-      border-bottom: 50px solid transparent;
+      border-bottom: $square-side solid transparent;
       position: absolute;
       top: 0;
       left: 0;
@@ -24,7 +24,7 @@
 
     &::before {
       content: "";
-      width: calc(50px * 1.41);
+      width: calc(#{$square-side} * 1.41);
       height: 1px;
       background-color: black;
       position: absolute;
@@ -65,7 +65,11 @@
   }
 
   &-img {
-    height: $image-height;
+    max-height: $image-height;
+
+    @include respond-to(tablet-and-down) {
+      max-height: calc(#{$image-height * 0.6});
+    }
   }
 
   &-price {

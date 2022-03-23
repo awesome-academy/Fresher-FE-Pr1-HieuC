@@ -11,8 +11,9 @@
       @include grid($column: repeat(2, 1fr), $col-gap: 2rem);
     }
 
-    @include respond-to(phone-and-down) {
+    @include respond-to(smallphone-and-down) {
       @include grid($column: 1fr);
+      justify-items: center;
     }
   }
 }

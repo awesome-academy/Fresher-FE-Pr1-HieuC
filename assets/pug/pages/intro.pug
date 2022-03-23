@@ -1,0 +1,17 @@
+extends ../base/layout.pug
+
+block title 
+  title About us
+
+block content 
+  -const introCrumb = [{"content": "Trang chủ", "href": "#"},{"content": "Giới thiệu", "href": "#"}]
+
+  section(class="introduction")
+    .container
+      +breadcrumb(introCrumb)
+      h4(class="heading-titary heading-decoration heading-decoration--arrow") GIỚI THIỆU
+      div(class="introduction-container")
+        img(src="./assets/images/hot-sale-banner.jpg")
+        div(class="introduction-main")
+          h6(class="heading-titary introduction-title") CHÀO MỪNG ĐẾN VỚI WINE HOUSE
+          p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente nam, maiores atque ipsum commodi quia recusandae! Inventore exercitationem est voluptatem blanditiis tempora, voluptates suscipit aut accusamus sunt esse eius earum. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente nam, maiores atque ipsum commodi quia recusandae! Inventore exercitationem est voluptatem blanditiis tempora, voluptates suscipit aut accusamus sunt esse eius earum.

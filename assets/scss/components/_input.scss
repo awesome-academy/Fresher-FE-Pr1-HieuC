@@ -22,6 +22,14 @@
 
   label {
     @include grid($column: 12rem 1fr);
+
+    @include respond-to(tablet-and-down) {
+      @include grid($column: 6rem 1fr);
+    }
+
+    @include respond-to(smallphone-and-down) {
+      @include flex($justify: flex-start, $direction: column, $align: flex-start, $gap: 0.2rem);
+    }
   }
 
   input {
@@ -39,6 +47,8 @@
 }
 
 .input-checkbox {
-  @include flex($justify: flex-start, $align: center, $gap: 1rem);
-  color: $color-grey-dark-2;
+  label {
+    @include flex($justify: flex-end, $align: center, $gap: 1rem, $direction: row-reverse);
+    color: $color-grey-dark-2;
+  }
 }

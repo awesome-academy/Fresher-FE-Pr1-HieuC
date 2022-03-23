@@ -3,30 +3,22 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 75%;
+
+  @include respond-to(extralarge-and-down) {
+    font-size: 85%;
+  }
 
   @include respond-to(largedesktop-and-down) {
-    font-size: 56.25%;
+    font-size: 70.25%;
   }
 
   @include respond-to(desktop-and-down) {
-    font-size: 50%;
-  }
-
-  @include respond-to(tablet-and-down) {
-    font-size: 46.25%;
-  }
-
-  @include respond-to(phone-and-down) {
-    font-size: 42.75%;
-  }
-
-  @include respond-to(smallphone-and-down) {
-    font-size: 37.5%;
+    font-size: 68.5%;
   }
 }
 
@@ -34,6 +26,10 @@ body {
   @include respond-to(desktop-and-down) {
     padding: 0;
   }
+}
+
+.section {
+  width: 100vw;
 }
 
 ::-webkit-scrollbar {
@@ -69,4 +65,10 @@ a {
 .container {
   width: 80%;
   margin: 1rem auto;
+
+  @include respond-to(desktop-and-down) {
+    width: 100%;
+    max-width: 768px;
+    margin: 1rem auto;
+  }
 }

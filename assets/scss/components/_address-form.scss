@@ -1,4 +1,7 @@
 .address-modified {
+  @include respond-to(phone-and-down) {
+    width: 90%;
+  }
   &__button {
     @include flex($align: center, $justify: center, $gap: 1rem);
   }
@@ -13,7 +16,7 @@
 .address-exists {
   @include flex($justify: flex-start, $align: flex-start, $direction: column, $gap: 1rem);
   grid-column: 1 /-1;
-  width: 50%;
+  width: 70%;
   padding: 1rem 0;
   border-top: 1px solid rgba($color-grey-dark-2, 0.3);
 

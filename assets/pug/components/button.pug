@@ -2,4 +2,4 @@ mixin button(props)
   if (props.isLink)
     a(class=`button ${props.type ? `button--${props.type}` : ''} ${props.size ? `button--${props.size}` : ''} ${props.color ? `button--${props.color}` : ''}` href=`${props.href}`) #{props.title}
   else
-    button(class=`button ${props.type ? `button--${props.type}` : ''} ${props.size ? `button--${props.size}` : ''} ${props.color ? `button--${props.color}` : ''}`) #{props.title} 
+    button(class=`button ${props.type ? `button--${props.type}` : ''} ${props.size ? `button--${props.size}` : ''} ${props.color ? `button--${props.color}` : ''}` data-bs-toggle=`${props.toggle}` data-bs-target=`#${props.target}`) #{props.title} 

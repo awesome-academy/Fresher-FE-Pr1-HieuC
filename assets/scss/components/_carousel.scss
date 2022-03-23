@@ -1,21 +1,17 @@
-.carousel-indicators li {
+.carousel-indicators [data-bs-target] {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   margin: 1px;
   text-indent: -999px;
   cursor: pointer;
   border: 1px solid $color-grey-dark-2;
-  border-radius: 10px;
+  border-radius: 20px;
   margin: 2px;
   position: relative;
-  top: 30px;
+  top: 40px;
+
   &.active {
     background: $color-black;
   }
-}
-
-.carousel-item,
-.carousel-item .active {
-  color: $color-grey-dark-3;
 }

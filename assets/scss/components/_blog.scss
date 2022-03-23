@@ -4,6 +4,10 @@
   max-width: 30rem;
   overflow: hidden;
 
+  @include respond-to(smallphone-and-down) {
+    max-width: 40rem;
+  }
+
   &:hover {
     cursor: pointer;
 

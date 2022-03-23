@@ -4,6 +4,10 @@
   width: 100vw;
   overflow: hidden;
 
+  @include respond-to(desktop-and-down) {
+    @include flex($justify: flex-start, $direction: column, $align: center);
+  }
+
   &-hero {
     position: relative;
     width: 100%;
@@ -11,9 +15,9 @@
     background-color: $color-secondary-light;
 
     &::after {
-      @include ab-translateMiddle(50%, 60%);
+      @include ab-translateMiddle(0, 60%);
       content: "404";
-      font-size: 25rem;
+      font-size: 35rem;
       color: $color-white;
       height: 100%;
       z-index: $z-low;
@@ -45,6 +49,7 @@
 
   &-title {
     @include ab-translateMiddle(40%, 35%);
+    font-family: "Inspiration", cursive;
     font-size: 15rem;
     z-index: $z-important;
     font-style: italic;

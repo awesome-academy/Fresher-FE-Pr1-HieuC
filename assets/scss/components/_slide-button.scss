@@ -24,4 +24,22 @@
     @include ab-translateMiddle(95%, 50%);
     position: absolute;
   }
+
+  &--right {
+    @include ab-translateMiddle(50%, 100%);
+    position: absolute;
+
+    @include respond-to(tablet-and-down) {
+      display: none;
+    }
+  }
+
+  &--left {
+    @include ab-translateMiddle(50%, 0%);
+    position: absolute;
+
+    @include respond-to(tablet-and-down) {
+      display: none;
+    }
+  }
 }

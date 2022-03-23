@@ -7,6 +7,10 @@
       @include grid($column: 3fr 1fr, $col-gap: 1rem);
     }
 
+    @include respond-to(tablet-and-down) {
+      @include grid($column: 1fr, $row-gap: 2rem);
+    }
+
     .contact-main {
       img {
         width: 100%;
@@ -15,6 +19,13 @@
 
     .contact-details {
       @include flex($justify: flex-start, $direction: column, $align: flex-start, $gap: 1.5rem);
+
+      @include respond-to(tablet-and-down) {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
       img {
         width: 50%;
       }

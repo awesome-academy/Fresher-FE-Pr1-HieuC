@@ -2,5 +2,10 @@
   .address-container {
     @include grid($column: repeat(2, 1fr), $row-gap: 1rem, $col-gap: 1rem);
     padding-top: 3rem;
+
+    @include respond-to(phone-and-down) {
+      @include grid($column: 1fr);
+      justify-items: center;
+    }
   }
 }

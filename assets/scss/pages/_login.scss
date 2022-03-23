@@ -2,6 +2,10 @@
   width: 60%;
   margin: 0 auto;
 
+  @include respond-to(tablet-and-down) {
+    width: 90%;
+  }
+
   .login-head {
     @include flex($justify: space-between, $align: flex-start);
   }
