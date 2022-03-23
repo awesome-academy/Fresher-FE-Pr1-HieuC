@@ -29,7 +29,7 @@ class View {
   }
 
   getProductById(id) {
-    return products.find((product) => product.id == id);
+    return products.find((product) => product.id === id);
   }
 
   productGrid(product) {
@@ -125,8 +125,8 @@ class View {
       button.addEventListener("click", (e) => {
         const inCart = Storage.getCart().find((item) => item.id === productId);
         if (inCart) {
-          let tempItem = cart.find((item) => item.id == productId);
-          tempItem.amount = tempItem.amount + 1;
+          let tempItem = cart.find((item) => item.id === productId);
+          tempItem.amount += 1;
           Storage.saveCart(cart);
         } else {
           const cartItem = { ...this.getProductById(productId), amount: 1 };
