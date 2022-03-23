@@ -7,7 +7,7 @@ block content
   -const productListCrumb = [{"content": "Trang chủ", "href": "#"},{"content": "Sản phẩm", "href": "#"},{"content": "Rượu vang đỏ", "href": "#"}]
   -const productsTags = ["Đồng hồ", "Túi", "Phụ kiện", "Giày dép", "Sơ mi", "Nước hoa", "Son", "Rựou"]
   -const menu = {"RƯỢU NGOẠI": [{"type": "Chivas", "number": 16},{"type": "Whisky", "number": 15},{"type": "Remy Martin", "number": 14},{"type": "Ballantine", "number": 13},{"type": "Chivas", "number": 16},{"type": "Whisky", "number": 15},{"type": "Remy Martin", "number": 14},{"type": "Ballantine", "number": 13}], "RƯỢU VANG": [{"type": "Vang pháp", "number": 12},{"type": "Vang Ý", "number": 14},{"type": "Vang Mỹ", "number": 13},{"type": "Vang Chile", "number": 17}]}
-  -const productList = {"title": "Rượu vang đà lạt", "discountPrice": "370.000","initialPrice": "450.000","img":"./assets/images/product-1.jpg","description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea, deleniti ex repellendus, est vitae et assumenda neque aliquid odit nam dolores doloribus velit dolorum aliquam. Quidem unde repellendus deleniti possimus"}
+
   -const productShowTabHeader = [{"icon": "fa-table-cells","id": "grid-control", "control": "grid-display", "selected":"true", "isActive": true},{"icon": "fa-grip-lines","id": "column-control", "control": "column-display", "selected":"false"}]
   -const tabContentProductShow = [{"showType": "grid", "id": "grid-display","controlBy": "grid-control", "show": true,"isActive": true},{"showType": "line", "id": "column-display","controlBy": "column-control"}]
 
@@ -42,9 +42,4 @@ block content
               for tab in tabContentProductShow 
                 div(class=`tab-pane fade ${tab.show ? "show" : ""} ${tab.isActive ? "active" : ''}` id=`${tab.id}` rol="tabpanel" aria-labelledby=`${tab.controlBy}`) 
                   div(class=`products-show--${tab.showType}`)
-                    if tab.showType == 'line'
-                      each item in Array(9)
-                        +product-line(productList) 
-                    else 
-                      each item in Array(9)
-                        +product(productList) 
+
