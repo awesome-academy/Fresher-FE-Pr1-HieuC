@@ -1,0 +1,47 @@
+.order-confirm {
+  .orderconfirm-container {
+    padding-top: 3rem;
+  }
+
+  .order-address {
+    border: 1px solid rgba($color-grey-dark-2, 0.3);
+    box-shadow: 0.5rem 0.5rem 0.5rem rgba($color-grey-dark-2, 0.3);
+    padding: 1rem;
+
+    label {
+      @include flex($justify: flex-start, $align: center, $gap: 1rem);
+    }
+  }
+
+  .order-cart {
+    border: 1px solid rgba($color-grey-dark-2, 0.3);
+    box-shadow: 0.5rem 0.5rem 0.5rem rgba($color-grey-dark-2, 0.3);
+    margin-top: 2rem;
+
+    .ordercart-item {
+      @include flex($justify: flex-start, $align: center);
+
+      img {
+        height: 7rem;
+        width: 5rem;
+        object-fit: cover;
+      }
+    }
+
+    h5 {
+      @include flex($justify: flex-start, $align: center, $gap: 1rem);
+      font-size: 2rem;
+    }
+  }
+
+  .orderconfirm-button {
+    margin-top: 2rem;
+    @include flex($justify: center, $align: center);
+
+    button {
+      a {
+        color: $color-white;
+      }
+    }
+  }
+}
