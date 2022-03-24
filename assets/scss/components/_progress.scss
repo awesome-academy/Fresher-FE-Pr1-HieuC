@@ -1,0 +1,80 @@
+.progressbar {
+  @include flex($justify: space-between, $align: center);
+  counter-reset: step;
+  padding: 0;
+
+  li {
+    list-style: none;
+    position: relative;
+    text-align: center;
+    width: calc(100% / 3);
+
+    &:before {
+      background: $color-grey-light-1;
+      border: 2px solid $color-grey-dark;
+      border-radius: 50%;
+      color: $color-grey-dark;
+      content: counter(step);
+      counter-increment: step;
+      display: block;
+      font-weight: 700;
+      height: 30px;
+      line-height: 27px;
+      margin: 0 auto 10px;
+      text-align: center;
+      width: 30px;
+    }
+
+    &:after {
+      background: $color-grey-dark-2;
+      content: "";
+      height: 3px;
+      left: -50%;
+      position: absolute;
+      top: 15px;
+      width: 100%;
+      z-index: -1;
+    }
+
+    &:first-child::after {
+      content: none;
+    }
+  }
+  li.active {
+    &:after {
+      background: $color-primary;
+    }
+  }
+
+  li.complete {
+    &:after {
+      background: $color-primary;
+    }
+  }
+
+  li.active {
+    &:before {
+      background: $color-primary;
+      border-color: $color-primary;
+      color: $color-grey-light-1;
+    }
+  }
+
+  li.complete {
+    &:before {
+      background: $color-primary;
+      border-color: $color-primary;
+      color: $color-grey-light-1;
+    }
+  }
+
+  li.active {
+    color: $color-primary;
+    font-weight: 700;
+  }
+
+  li.complete {
+    color: $color-grey-dark-2;
+    font-weight: 700;
+  }
+}

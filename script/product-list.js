@@ -2,6 +2,7 @@
 const productListGrid = document.querySelector(".products-show--grid");
 const productListLine = document.querySelector(".products-show--line");
 const cartList = document.querySelector(".cart-table");
+const paginationBtn = document.querySelectorAll(".page-link");
 
 let buttonDOM = [];
 let cart = [];
@@ -116,6 +117,17 @@ class View {
     });
   }
 
+  renderProductsByPage = function (action) {
+    paginationBtn.forEach((btn) => {
+      btn.addEventListener("click", async (e) => {
+        let data = await action(btn.dataset.page, 6);
+        productListGrid.innerHTML = "";
+        productListLine.innerHTML = "";
+        this.renderProducts(data);
+      });
+    });
+  };
+
   addCartButton() {
     const bagButton = [...document.querySelectorAll(".bag-button")];
     buttonDOM = bagButton;
@@ -157,9 +169,11 @@ document.addEventListener("DOMContentLoaded", () => {
   view.initialApp();
 
   model
-    .getProduct(1, 9)
+    .getProduct(1, 6)
     .then((products) => {
+      console.log(products);
       view.renderProducts(products);
+      view.renderProductsByPage(model.getProduct);
     })
     .then(() => {
       view.addCartButton();
