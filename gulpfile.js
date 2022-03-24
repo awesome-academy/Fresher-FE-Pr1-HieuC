@@ -41,13 +41,13 @@ function serve() {
     server: {
       baseDir: "./",
     },
-    port: 3000,
+    port: 5000,
   });
-  watch(pugFiles, pugTask);
+
   watch(sassFiles, sassTask);
 }
 
 exports.sass = sassTask;
 exports.pug = pugTask;
 exports.default = series(parallel(pugTask, sassTask));
-exports.serve = series(serve, parallel(pugTask, sassTask));
+exports.serve = series(serve, parallel(sassTask));
