@@ -1,0 +1,39 @@
+.checkout {
+  .checkout-container {
+    @include grid($column: 2fr 1fr);
+
+    .address-exists {
+      grid-column: auto;
+    }
+
+    .checkout-cart {
+      .checkout-cartitem {
+        @include grid($column: 5rem 4fr 1fr);
+
+        &__img {
+          width: 5rem;
+          height: 8rem;
+
+          img {
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+
+      .checkout-voucher {
+        @include flex($justify: flex-start, $align: center, $gap: 0.5rem);
+      }
+
+      .checkout-count {
+        @include flex($justify: space-between, $align: center);
+        margin: 2rem 0;
+      }
+    }
+  }
+
+  .checkout-confirm {
+    @include flex($justify: center, $align: center);
+    padding-top: 3rem;
+  }
+}

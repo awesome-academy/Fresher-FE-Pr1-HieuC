@@ -157,21 +157,21 @@
     {
       "cart": [
         {
-          "id": "9",
-          "title": "Whisky",
-          "price": 310000,
+          "id": "6",
+          "title": "Rượu gạo",
+          "price": 380000,
           "initialPrice": 450000,
-          "img": "./assets/images/9.jpg",
+          "img": "./assets/images/6.jpg",
           "description": "Rượu tuyệt vời dành cho những người tuyệt vời",
           "amount": 2
         },
         {
-          "id": "8",
-          "title": "Rượu vang nhạt",
-          "price": 320000,
+          "id": "5",
+          "title": "Rượu nho",
+          "price": 370000,
           "initialPrice": 450000,
-          "img": "./assets/images/8.jpg",
-          "description": "Rượu tuyệt vời dành cho những người tuyệt vời",
+          "img": "./assets/images/5.jpg",
+          "description": "Rượu tuyệt vời dành cho những người tuyệt vờiiii",
           "amount": 2
         }
       ],
@@ -190,20 +190,20 @@
     {
       "cart": [
         {
-          "id": "9",
-          "title": "Whisky",
-          "price": 310000,
+          "id": "3",
+          "title": "Rượu wisky",
+          "price": 350000,
           "initialPrice": 450000,
-          "img": "./assets/images/9.jpg",
+          "img": "./assets/images/3.jpg",
           "description": "Rượu tuyệt vời dành cho những người tuyệt vời",
-          "amount": 2
+          "amount": 1
         },
         {
-          "id": "8",
-          "title": "Rượu vang nhạt",
-          "price": 320000,
+          "id": "2",
+          "title": "Rượu vang đà lạt",
+          "price": 340000,
           "initialPrice": 450000,
-          "img": "./assets/images/8.jpg",
+          "img": "./assets/images/2.jpg",
           "description": "Rượu tuyệt vời dành cho những người tuyệt vời",
           "amount": 2
         }
@@ -219,72 +219,6 @@
         "phone": "0967433456"
       },
       "id": 2
-    },
-    {
-      "cart": [
-        {
-          "id": "9",
-          "title": "Whisky",
-          "price": 310000,
-          "initialPrice": 450000,
-          "img": "./assets/images/9.jpg",
-          "description": "Rượu tuyệt vời dành cho những người tuyệt vời",
-          "amount": 2
-        },
-        {
-          "id": "8",
-          "title": "Rượu vang nhạt",
-          "price": 320000,
-          "initialPrice": 450000,
-          "img": "./assets/images/8.jpg",
-          "description": "Rượu tuyệt vời dành cho những người tuyệt vời",
-          "amount": 2
-        }
-      ],
-      "address": {
-        "id": "add01",
-        "name": "Hiếu",
-        "lastName": "Nguyễn Ngọc",
-        "addr": "124 Yên Lãng Cầu Giấy",
-        "city": "Hà Nội",
-        "nation": "Việt Nam",
-        "zipcode": 10000,
-        "phone": "0967433456"
-      },
-      "id": 3
-    },
-    {
-      "cart": [
-        {
-          "id": "8",
-          "title": "Rượu vang nhạt",
-          "price": 320000,
-          "initialPrice": 450000,
-          "img": "./assets/images/8.jpg",
-          "description": "Rượu tuyệt vời dành cho những người tuyệt vời",
-          "amount": 1
-        },
-        {
-          "id": "9",
-          "title": "Whisky",
-          "price": 310000,
-          "initialPrice": 450000,
-          "img": "./assets/images/9.jpg",
-          "description": "Rượu tuyệt vời dành cho những người tuyệt vời",
-          "amount": 2
-        }
-      ],
-      "address": {
-        "id": "add01",
-        "name": "Hiếu",
-        "lastName": "Nguyễn Ngọc",
-        "addr": "124 Yên Lãng Cầu Giấy",
-        "city": "Hà Nội",
-        "nation": "Việt Nam",
-        "zipcode": 10000,
-        "phone": "0967433456"
-      },
-      "id": 4
     }
   ],
   "address": [
