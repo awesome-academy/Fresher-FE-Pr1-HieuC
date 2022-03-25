@@ -2,8 +2,9 @@
 const productListGrid = document.querySelector(".products-show--grid");
 const productListLine = document.querySelector(".products-show--line");
 const cartList = document.querySelector(".cart-table");
-const paginationBtn = document.querySelectorAll(".page-link");
 const productMenu = document.querySelector(".products-menu");
+const cartQuantity = document.querySelector(".cart-quantity");
+const pagination = document.querySelector(".pagination");
 
 const PRODUCT_PER_PAGE = 6;
 
@@ -12,6 +13,8 @@ let cart = [];
 let products = [];
 let menu = [];
 let categoryApplied = "";
+let totalProduct = 0;
+let currentPage = 1;
 //////////////Model//////////////////
 class Model {
   getProduct = async function (page = 1, limit = 9) {
@@ -22,6 +25,7 @@ class Model {
       const data = await res.json();
       if (!res.ok) throw new Error(`${data.message} ${res.status}`);
       products = data;
+      totalProduct = res.headers.get("X-Total-Count");
       return products;
     } catch (err) {
       console.log(err);
@@ -29,13 +33,17 @@ class Model {
   };
 
   getProductByCategory = async function (category, page = 1, limit = 6) {
+    const view = new View();
     try {
       const res = await fetch(
         `http://localhost:3000/products?category=${category}&_page=${page}&_limit=${limit}`
       );
       const data = await res.json();
       if (!res.ok) throw new Error(`${data.message} ${res.status}`);
+      totalProduct = res.headers.get("X-Total-Count");
       products = data;
+      pagination.innerHTML = "";
+      view.renderPagination(totalProduct);
       return products;
     } catch (err) {
       console.log(err);
@@ -78,6 +86,13 @@ class Model {
 class View {
   initialApp() {
     cart = Storage.getCart();
+    this.renderCartQuantity();
+  }
+
+  // CART
+  renderCartQuantity() {
+    let totalQuantity = cart.reduce((total, item) => total + item.amount, 0);
+    cartQuantity.textContent = totalQuantity;
   }
 
   // PRODUCT
@@ -99,7 +114,7 @@ class View {
                       <p class="product-price--initial">${product.initialPrice}</p>
                     </div>
                     <button
-                      class="bag-button button button--xxl" data-id=${product.id}
+                      class="bag-button button button--xxl" data-id=${product.id} data-bs-toggle="modal" data-bs-target="#addCartModal"
                     >
                       ADD TO CART
                     </button>
@@ -148,7 +163,7 @@ class View {
                         <i class="fa-solid fa-link"></i>
                       </div>
                       <button
-                        class="bag-button button button--xxl" data-id=${product.id}
+                        class="bag-button button button--xxl" data-id=${product.id} data-bs-toggle="modal" data-bs-target="#addCartModal"
                       >
                         ADD TO CART
                       </button>
@@ -171,6 +186,7 @@ class View {
   }
 
   renderProductsByPage = function (action) {
+    const paginationBtn = document.querySelectorAll(".page-link");
     paginationBtn.forEach((btn) => {
       btn.addEventListener("click", async (e) => {
         await action(
@@ -178,6 +194,7 @@ class View {
           Number(btn.dataset.page),
           PRODUCT_PER_PAGE
         );
+        currentPage = btn.dataset.page;
         productListGrid.innerHTML = "";
         productListLine.innerHTML = "";
         this.renderProducts(products);
@@ -202,6 +219,7 @@ class View {
           cart = [...cart, cartItem];
           Storage.saveCart(cart);
         }
+        this.renderCartQuantity();
       });
     });
   }
@@ -245,8 +263,25 @@ class View {
             btn.classList.remove("products-menu__item--active");
           }
         });
+        this.addCartButton();
       });
     });
+  };
+
+  // PAGINATION
+
+  renderPagination = function (total) {
+    const model = new Model();
+    let totalPage = Math.ceil(total / PRODUCT_PER_PAGE);
+    for (let i = 1; i <= totalPage; i++) {
+      let pageHTML = `
+         <li class="page-item">
+              <a class="page-link" data-page="${i}">${i}</a>
+         </li>
+      `;
+      pagination.insertAdjacentHTML("beforeend", pageHTML);
+    }
+    this.renderProductsByPage(model.getProductsByPage);
   };
 }
 
@@ -276,6 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(() => {
       view.addCartButton();
+      view.renderPagination(totalProduct);
     });
 
   model.getMenu().then((menu) => {
