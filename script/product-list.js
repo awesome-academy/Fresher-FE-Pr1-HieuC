@@ -3,10 +3,15 @@ const productListGrid = document.querySelector(".products-show--grid");
 const productListLine = document.querySelector(".products-show--line");
 const cartList = document.querySelector(".cart-table");
 const paginationBtn = document.querySelectorAll(".page-link");
+const productMenu = document.querySelector(".products-menu");
+
+const PRODUCT_PER_PAGE = 6;
 
 let buttonDOM = [];
 let cart = [];
 let products = [];
+let menu = [];
+let categoryApplied = "";
 //////////////Model//////////////////
 class Model {
   getProduct = async function (page = 1, limit = 9) {
@@ -22,12 +27,60 @@ class Model {
       console.log(err);
     }
   };
+
+  getProductByCategory = async function (category, page = 1, limit = 6) {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/products?category=${category}&_page=${page}&_limit=${limit}`
+      );
+      const data = await res.json();
+      if (!res.ok) throw new Error(`${data.message} ${res.status}`);
+      products = data;
+      return products;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  getMenu = async function () {
+    try {
+      const res = await fetch(`http://localhost:3000/menu`);
+      const data = await res.json();
+      if (!res.ok) throw new Error(`${data.message} ${res.status}`);
+      menu = data;
+      return menu;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  getProductsByPage = async function (category, page, limit) {
+    try {
+      let res;
+      if (categoryApplied) {
+        res = await fetch(
+          `http://localhost:3000/products?category=${category}&_page=${page}&_limit=${limit}`
+        );
+      } else {
+        res = await fetch(
+          `http://localhost:3000/products?_page=${page}&_limit=${limit}`
+        );
+      }
+      const data = await res.json();
+      if (!res.ok) throw new Error(`${data.message} ${res.status}`);
+      products = data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 }
 
 class View {
   initialApp() {
     cart = Storage.getCart();
   }
+
+  // PRODUCT
 
   getProductById(id) {
     return products.find((product) => product.id === id);
@@ -120,10 +173,14 @@ class View {
   renderProductsByPage = function (action) {
     paginationBtn.forEach((btn) => {
       btn.addEventListener("click", async (e) => {
-        let data = await action(btn.dataset.page, 6);
+        await action(
+          categoryApplied,
+          Number(btn.dataset.page),
+          PRODUCT_PER_PAGE
+        );
         productListGrid.innerHTML = "";
         productListLine.innerHTML = "";
-        this.renderProducts(data);
+        this.renderProducts(products);
       });
     });
   };
@@ -148,6 +205,49 @@ class View {
       });
     });
   }
+
+  // FILTER BAR
+
+  renderCategoryBar(menu) {
+    for (const [key, value] of Object.entries(menu)) {
+      productMenu.insertAdjacentHTML(
+        "beforeend",
+        `<div class="products-menu__group products-menu__group-${key}"><h3>${value[
+          "title"
+        ].toUpperCase()}</h3></div>`
+      );
+      value["list"].map((val) => {
+        document
+          .querySelector(`.products-menu__group-${key}`)
+          .insertAdjacentHTML(
+            "beforeend",
+            `<p class='products-menu__item ' data-category=${val}>
+            ${val} 
+          </p>`
+          );
+      });
+    }
+  }
+
+  renderProductsByCategory = function (action) {
+    const categoryBtn = document.querySelectorAll(".products-menu__item");
+    categoryBtn.forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        let category = btn.dataset.category;
+        let data = await action(category);
+        productListGrid.innerHTML = "";
+        productListLine.innerHTML = "";
+        categoryApplied = category;
+        this.renderProducts(products);
+        btn.classList.add("products-menu__item--active");
+        categoryBtn.forEach((btn) => {
+          if (btn.dataset.category !== category) {
+            btn.classList.remove("products-menu__item--active");
+          }
+        });
+      });
+    });
+  };
 }
 
 class Storage {
@@ -169,13 +269,18 @@ document.addEventListener("DOMContentLoaded", () => {
   view.initialApp();
 
   model
-    .getProduct(1, 6)
+    .getProduct(1, PRODUCT_PER_PAGE)
     .then((products) => {
-      console.log(products);
       view.renderProducts(products);
-      view.renderProductsByPage(model.getProduct);
+      view.renderProductsByPage(model.getProductsByPage);
     })
     .then(() => {
       view.addCartButton();
     });
+
+  model.getMenu().then((menu) => {
+    view.renderCategoryBar(menu);
+    view.renderProductsByCategory(model.getProductByCategory);
+    view.renderProductsByPage(model.getProductsByPage);
+  });
 });
