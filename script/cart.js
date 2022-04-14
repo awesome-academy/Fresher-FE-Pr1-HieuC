@@ -118,6 +118,7 @@ class View {
         this.updateCart(productId, tempItem.amount, tempTotal);
       }
       if (e.target.classList.contains("fa-trash")) {
+        const trashBtn = document.querySelector(".fa-trash");
         cartList.removeChild(trashBtn.parentElement.parentElement);
         this.removeItem(productId);
       }

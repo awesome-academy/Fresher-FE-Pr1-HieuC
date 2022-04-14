@@ -12,6 +12,24 @@ header {
     }
   }
 
+  .nav-search {
+    @include flex($justify: center, $align: center, $gap: 2rem);
+  }
+
+  .cart-icon {
+    position: relative;
+    .cart-quantity {
+      @include ab-translateMiddle(0, 100%);
+      color: $color-white;
+      background-color: $color-red;
+      border-radius: 50%;
+      height: 1.5rem;
+      width: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+
   .header-box {
     @include ab-translateMiddle(50%, 50%);
     color: $color-grey-light-1;

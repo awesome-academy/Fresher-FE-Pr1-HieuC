@@ -2,20 +2,29 @@
 const orderCartList = document.querySelector(".ordercart-itemlist");
 const orderCartTotal = document.querySelector(".order-carttotal");
 const orderAddress = document.querySelector(".order-address");
+const orderconfirmContainer = document.querySelector(".orderconfirm-container");
+const backHomeBtn = document.querySelector(".order-backhome");
 
-let cartList = [];
+let orderConfirm = {};
 //////////////Model//////////////////
 class Model {}
 
 class View {
   initialApp() {
-    this.renderCartList();
-    this.renderTotal();
-    this.renderAddress();
+    orderConfirm = Storage.getOrderConfirm();
+    console.log(typeof orderConfirm, Object.keys(orderConfirm).length);
+    if (Object.keys(orderConfirm).length == 0) {
+      orderconfirmContainer.innerHTML = `<h3>Not new order</h3>`;
+      document.querySelector(".progressbar").innerHTML = "";
+    } else {
+      this.renderCartList();
+      this.renderTotal();
+      this.renderAddress();
+    }
   }
 
   renderAddress() {
-    let addressConfirm = Storage.getOrderConfirm().address;
+    let addressConfirm = orderConfirm.defaultAddress;
     let addressHtml = `
        <label
           >Tên
@@ -31,17 +40,15 @@ class View {
   }
 
   renderTotal() {
-    let orderConfirm = Storage.getOrderConfirm();
     let totalCart = orderConfirm.cart.reduce(
       (total, item) => total + item.price * item.amount,
       0
     );
-    console.log(totalCart);
     orderCartTotal.innerText = totalCart;
   }
 
   renderCartList() {
-    Storage.getOrderConfirm().cart.map((item) => {
+    orderConfirm.cart.map((item) => {
       const cartHtml = `
        <div class="ordercart-item">
           <img src="${item.img}" alt=${item.title}/>
@@ -49,6 +56,13 @@ class View {
         </div>
       `;
       orderCartList.insertAdjacentHTML("afterbegin", cartHtml);
+    });
+  }
+
+  backToHomePage() {
+    backHomeBtn.addEventListener("click", () => {
+      Storage.deleteOrderConfirm();
+      window.location.href = "http://localhost:5000/product-list.html";
     });
   }
 }
@@ -61,7 +75,7 @@ class Storage {
   }
 
   static deleteOrderConfirm() {
-    localStorage.removeItem("newOrder", JSON.stringify(cart));
+    localStorage.removeItem("newOrder", JSON.stringify("newOrder"));
   }
 }
 
@@ -69,4 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const view = new View();
 
   view.initialApp();
+  view.backToHomePage();
+});
+
+window.addEventListener("beforeunload", () => {
+  Storage.deleteOrderConfirm();
 });
